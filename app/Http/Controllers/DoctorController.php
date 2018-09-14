@@ -16,7 +16,6 @@ class DoctorController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-
         $doctors = Doctor::inRandomOrder()->DoctorsByName($search)->paginate(16);
         return view('doctors.index', compact('doctors','search'));
     }

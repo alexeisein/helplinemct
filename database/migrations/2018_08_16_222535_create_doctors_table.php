@@ -19,12 +19,12 @@ class CreateDoctorsTable extends Migration
             $table->integer('department_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned()->nullable();
             
-            $table->string('title')->index();
             $table->string('name')->index();
             $table->string('dicipline');
             $table->string('gender');
             $table->longText('about');
             $table->text('experience');
+            $table->integer('years_experience')->unsigned();
             $table->text('education');
             $table->text('awards')->nullable();
             $table->string('image')->default('doctor.jpg');

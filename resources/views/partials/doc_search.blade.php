@@ -1,6 +1,6 @@
 <div id="morphsearch" class="morphsearch">
 				<form action="{{ route('doctor.search') }}" method="GET" class="morphsearch-form">
-					<input class="morphsearch-input" name="search" type="search" value="{{ isset($search) ? $search : '' }}" placeholder="Search..."/>
+					<input class="morphsearch-input" name="search" type="search" value="{{ isset($search) ? $search : '' }}" placeholder="Search... By Name Or Years Of Experience "/>
 				</form>
 				<span class="morphsearch-close"></span>
 			</div><!-- /morphsearch -->

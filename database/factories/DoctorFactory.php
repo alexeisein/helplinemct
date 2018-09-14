@@ -17,9 +17,9 @@ $factory->define(App\Doctor::class, function (Faker $faker) {
     	'location_id' => function(){
     		return Location::all()->random();
     	},
-        'title' => $faker->title,
         'name' => $faker->name,
         'dicipline' => $faker->words(3, true),
+        'years_experience' => $faker->numberBetween(5, 50),
 		'about' => $faker->sentence(100),
         'gender' => function(){
             $gender = ['male', 'female'];

@@ -36,7 +36,7 @@
 				<li><a class="page-scroll scroll" href="{{ route('treatment.index') }}">Treatments</a></li>
 				{{-- <li><a class="page-scroll scroll" href="#specialities">Specialities</a></li> --}}
 				<li><a class="" href="{{ route('hospital.index') }}">Hospitals</a></li>
-				<li><a class="" href="">Blog</a></li>
+				{{-- <li><a class="" href="">Blog</a></li> --}}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Specialities <span class="caret"></span></a>
 					<ul class="dropdown-menu">

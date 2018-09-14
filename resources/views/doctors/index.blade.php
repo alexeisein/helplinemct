@@ -31,6 +31,9 @@
 		@include('partials.doc_search')
 
 		<div class="row" style="margin-top: 100px;">
+
+			@include('partials.flash.error')
+
             @foreach ($doctors as $doctor)
 		        
 		        <div class="col-md-3 agile_team_grid agile_team_grid2">
@@ -46,9 +49,13 @@
 					</div>
 				</div>
 				<div class="agile_team_grid1">
-					<a href="{{ route('doctor.show', $doctor->slug) }}"><h4>{{ $doctor->title .' ' .$doctor->name }}</h4>
-					<p>{{ strstr($doctor->dicipline, ' ', true) }}</p></a>
+					<a href="{{ route('doctor.show', $doctor->slug) }}">
+						<h4>{{ $doctor->title .' ' .$doctor->name }}</h4>
+						<p>{{ strstr($doctor->dicipline, ' ', true) }}</p>
+						<small class="text-warning">{{ $doctor->years_experience }} Years Of Experience</small>
+					</a>
 				</div>
+				{{--  --}}
 			</div>
             @endforeach
 		</div>

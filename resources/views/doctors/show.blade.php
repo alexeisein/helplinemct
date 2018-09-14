@@ -117,7 +117,9 @@
 
 					                        <div class="col-xs-12 col-sm-8">
 					                           <ul class="list-group">
-					                              <li class="list-group-item"><i class="fa fa-user-md fa-heading"></i> {{ $doctor->title .' '.$doctor->name }}</li>
+					                              <li class="list-group-item"><i class="fa fa-user-md fa-heading"></i> {{ $doctor->name }} <br>
+					                              	<small style="font-style: italic; font-size: small;"><em class="text-warning">({{ $doctor->years_experience }} Years Of Experience)</em></small>
+					                              </li>
 					                              <li class="list-group-item"><i class="fa fa-user-md fa-heading"></i> {{ $doctor->dicipline }}</li>
 					                              <li class="list-group-item"><i class="fas fa-user-graduate fa-heading"></i> {{ $doctor->education }} </li>
 					                              <li class="list-group-item"><i class="fa fa-building fa-heading"></i> {{ $doctor->department->name }} </li>
@@ -167,7 +169,7 @@
 					                  	<ul class="list-group">
 					                  		@foreach (explode(".", $doctor->awards) as $award)
 						                  		<li class="list-group-item awards">
-						                  			<a href="">{{ $award }}</a>
+						                  			{{ $award }}
 						                  			<span class="badge"><i class="fas fa-check"></i></span>
 						                  		</li>
 						                  	@endforeach
@@ -193,7 +195,7 @@
 						                  <ul class="list-group" >
 						                     	@foreach (explode(".", $doctor->education) as $education)
 						                     		<li class="list-group-item edu">
-						                     			<a href="">{{ $education }}</a>
+						                     			{{ $education }}
 						                     			<span class="badge"><i class="fas fa-check"></i></span>
 						                     		</li>
 						                     	@endforeach
