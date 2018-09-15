@@ -58,25 +58,24 @@
 
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 well" id="well">
 						<div>
-							<h4><b>DIRECTION:</b></h4><p> {{ str_limit($hospital->address) }}</p>
+							<h4 class="text-primary"><b>DIRECTION:</b></h4><p> {{ str_limit($hospital->address) }}</p>
 						</div><hr>
 
 						<div>
-							<h4><b>ABOUT:</b></h4></p> {{ str_limit($hospital->about) }} <br>
-								<a href="{{ route('hospital.show', $hospital->slug) }}" class="btn btn-default btn-sm">Contine ...</a>
+							<h4 class="text-primary"><b>ABOUT:</b></h4></p> {{ str_limit($hospital->about) }} <br><br>
+								<a href="{{ route('hospital.show', $hospital->slug) }}" class="btn btn-info btn-sm">Contine Reading [...]</a>
 							</p>
 						</div><hr>
 
-						<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12"><h4><b>LOCATION:</b></h4>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px; border-bottom:1px solid #d9d9d9; padding-bottom: 20px;"><h4 class="text-primary"><b>LOCATION:</b></h4>
 							<p><b>City:</b> {{ str_limit($hospital->location->city) }}</p>
 						 	<p><b>State:</b> {{ str_limit($hospital->location->state) }}</p>
 							<p><b>Country:</b> {{ str_limit($hospital->location->country) }}</p>
-						</div><hr>
-						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-							<button class="btn btn-sm btn-danger pull-right">Make Enquiry</button>
+						</div>
+						<div>
+							@include('partials.modal_enquiry')
 						</div>
 					</div>
-        		<br><br>
         	@endforeach
 
 		</div>
@@ -84,6 +83,9 @@
 	</div>
 
 	<div class="text-center">{{ $hospitals->appends(['search' => $search])->links() }}</div>
+	<br><hr><br>
+
+	@include('partials.enquiry_form')
 
 @include('partials.copyright')
 

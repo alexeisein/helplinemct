@@ -2503,3 +2503,9 @@ div.gallery-grid{
     font-family: 'helvetica neue',sans-serif;
     font-weight: lighter;
 }
+
+/*Normal Enquiry Form*/
+#enquiry_header{
+    font-family: 'helvetica neue';
+    font-weight: lighter;
+}

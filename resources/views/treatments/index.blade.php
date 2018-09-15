@@ -43,32 +43,13 @@
 		</table>
 	</div>
 	<div class="text-center">{{ $treatments->links() }}</div>
+	<br><hr><br>
+
+	<div class="row">
+        @include('partials.enquiry_form')
+    </div>
 
 @include('partials.copyright')
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-
- //    	document.getElementById('treatment').addEventListener('change', function () {
-    		
- //    		// alert('hi')
-
- //    		axios.get('/cost/2', {
-	// 		    id: 2,
-	// 		  })
-	// 		  .then(function (response) {
-	// 		    console.log(response);
-	// 		  })
-	// 		  .catch(function (error) {
-	// 		    console.log(error);
-	// 		  })
-	// 		  .then(function () {
-	// 		    // always executed
-	// 		  });
-    	
-	// });
-
-</script>
 
 @endsection
 

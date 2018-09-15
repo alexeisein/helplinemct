@@ -73,6 +73,11 @@ class PageController extends Controller
         return redirect()->back();
         
     }
+
+    public function enquiry(Request $request)
+    {
+        dd($request->all());
+    }
     
 
     public function specialities()

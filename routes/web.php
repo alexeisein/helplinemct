@@ -61,6 +61,7 @@ Route::get('/testimonies', "PageController@testimonies");
 Route::get('/accommodation', "PageController@accommodation");
 Route::get('/contact', "PageController@getContact");
 Route::post('/contact', "PageController@postContact")->name('page.contact');
+Route::post('/enquiry', "PageController@enquiry")->name('page.enquiry');
 Route::get('/specialities', "PageController@specialities");
 Route::get('/keyareas', "PageController@keyareas");
 

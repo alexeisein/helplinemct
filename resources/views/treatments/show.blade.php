@@ -24,6 +24,10 @@
 
 	</div>
 
+	<br><hr><br>
+
+	@include('partials.enquiry_form')
+
 
 @include('partials.copyright')
 

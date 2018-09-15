@@ -40,34 +40,35 @@
 		    </div>
 
 		    <div class="">
-		    	<p><h4>DIRECTION: </h4>{{ $hospital->address }}</p>
+		    	<p><h4 class="text-primary">DIRECTION: </h4>{{ $hospital->address }}</p>
 		    </div>
 		    <br><hr><br>
 
 		    <div class="">
-		    	<button class="btn btn-lg btn-danger">Make Enquiry</button>
+		    	{{-- <button class="btn btn-lg btn-danger">Make Enquiry</button> --}}
+		    	@include('partials.modal_enquiry')
 		    </div>
 
 		</div><br>
 		
 		<div class="">
-			<p class="text-warning">Established In: {{ $hospital->established }}  &nbsp;|&nbsp;  Number Of Beds: {{ $hospital->beds }}  &nbsp;|&nbsp;   Number Of Icu Beds: {{ $hospital->icu_beds }}</p>
+			<p class="text-danger">Established In: {{ $hospital->established }}  &nbsp;|&nbsp;  Number Of Beds: {{ $hospital->beds }}  &nbsp;|&nbsp;   Number Of Icu Beds: {{ $hospital->icu_beds }}</p>
 		</div><hr>
 
 		<div class="">
-			<h3>ABOUT HOSPITAL</h3><hr><p>{{ $hospital->about }}</p>
+			<h3 class="text-primary">ABOUT HOSPITAL</h3><hr><p>{{ $hospital->about }}</p>
 		</div>
 		<hr><br>
 
 		<div class="">
-			<h3>INFRASTRUCTURES</h3><hr><p>{{ $hospital->infrastructures }}</p>
+			<h3 class="text-primary">INFRASTRUCTURES</h3><hr><p>{{ $hospital->infrastructures }}</p>
 		</div>
 	</div>
 	<br><br><hr>
 
 {{-- Show SIMILAR HOSPITAL --}}
 	<div class="container">
-		<div><h2 style="text-align: left;">OTHER HOSPITALS</h2></div><hr>
+		<div><h2 class="text-primary text-center">OTHER HOSPITALS</h2></div><hr>
 		@foreach ($OterHospitals as $OterHospital)
 			<div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-12 filter hdpe">
 				<div class="col-12-lg col-md-12 col-sm-12 col-xs-12">
@@ -82,6 +83,10 @@
 
 		<div class="text-center">{{ $OterHospitals->links() }}</div>
 	</div>
+
+	<br><hr><br>
+
+	@include('partials.enquiry_form')
 
 
 @include('partials.copyright')
