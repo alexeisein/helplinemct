@@ -22,4 +22,6 @@ class Department extends Model
     {
     	return $this->belongsToMany(Hospital::class);
     }
+
+    
 }

@@ -82,5 +82,6 @@ Route::get('/hospital/{hospital}', "HospitalController@show")->name('hospital.sh
 Route::get('/doctor', "DoctorController@index")->name('doctor.index');
 Route::get('/doctor/{doctor}', "DoctorController@show")->name('doctor.show');
 // QUERRIES
-Route::get('/search/doctor', "DoctorController@index")->name('doctor.search');
+Route::get('/search/doctor', "DoctorController@doctorSearch")->name('doctor.search');
+Route::get('/search/doctor/city', "DoctorController@city")->name('doctor.city');
 Route::get('/search/hospital', "HospitalController@index")->name('hospital.search');

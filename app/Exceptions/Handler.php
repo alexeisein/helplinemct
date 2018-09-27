@@ -31,6 +31,21 @@ class Handler extends ExceptionHandler
     ];
 
     /**
+         * Convert an authentication exception into a response.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  \Illuminate\Auth\AuthenticationException  $exception
+         * @return \Illuminate\Http\Response
+         */
+    protected function unauthenticated($request, AuthenticationException $exception)
+     {
+        // custom. It was removed in laravel current versions
+        // return $request->expectsJson()
+        //         ? response()->json(['message' => 'Unauthenticated.'], 401)
+        //         : redirect()->guest(route('authentication.index'));
+    }
+
+    /**
      * Report or log an exception.
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.

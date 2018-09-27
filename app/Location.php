@@ -36,4 +36,6 @@ class Location extends Model
     {
         return ucwords($country);
     }
+
+    
 }

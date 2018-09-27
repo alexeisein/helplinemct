@@ -19,7 +19,7 @@ $factory->define(App\Doctor::class, function (Faker $faker) {
     	},
         'name' => $faker->name,
         'dicipline' => $faker->words(3, true),
-        'years_experience' => $faker->numberBetween(5, 50),
+        'years_experience' => $faker->numberBetween(1, 70),
 		'about' => $faker->sentence(100),
         'gender' => function(){
             $gender = ['male', 'female'];

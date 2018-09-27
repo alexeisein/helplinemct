@@ -19,6 +19,7 @@ class Doctor extends Model
         'gender',
     ];
 
+// DEFINE RELATIONSHIPS
     public function hospital()
     {
         return $this->belongsTo(Hospital::class);
@@ -49,18 +50,25 @@ class Doctor extends Model
         return $this->belongsToMany(Treatment::class);
     }
 
+// GET OTHER DOCTORS
     public function scopeOtherDoctors($query)
     {
         return $query->inRandomOrder()->paginate(12);
     }
 
-    // Search for Doctors by name
+// Search for Doctors by name
     public function scopeDoctorsByName($query, $string)
     {
         return $query->where('name', 'like', '%' .$string .'%')
             ->orWhere('years_experience', $string);
     }
 
+    // public function scopeDoctorsByCity($query, $int, Location $location)
+    // {
+    //     return $query->where('location_id', $location->id);
+    // }
+
+// ASSIGN DR. OR PROF. TO DOCTORS WITHOUT TITLE
     public function getNameAttribute($value)
     {
         $name = strstr($value, ' ', true); //returns first string of name
@@ -81,4 +89,64 @@ class Doctor extends Model
             return ucfirst($randTitle) .' ' .strstr($value, ' ');
         }
     }
+
+// SORT DOCTORS BY YEARS OF EXPERIENCE
+    public function scopeFiveYears($query)
+    {
+        return $query->where('years_experience', '<=', 5);
+    }
+    public function scopeSixYears($query)
+    {
+        return $query->whereBetween('years_experience', [5, 11]);
+    }
+    public function scopeTwelveYears($query)
+    {
+        return $query->whereBetween('years_experience', [12, 17]);
+    }
+
+    public function scopeEighteenYears($query)
+    {
+        return $query->whereBetween('years_experience', [18, 23]);
+    }
+
+    public function scopeTwentyFourYears($query)
+    {
+        return $query->whereBetween('years_experience', [24, 29]);
+    }
+
+    public function scopeThirtyYears($query)
+    {
+        return $query->whereBetween('years_experience', [30, 35]);
+    }
+
+    public function scopeThirtySixYears($query)
+    {
+        return $query->whereBetween('years_experience', [36, 41]);
+    }
+
+    public function scopeFourtyTwoYears($query)
+    {
+        return $query->whereBetween('years_experience', [42, 47]);
+    }
+
+    public function scopeFourtyEightYears($query)
+    {
+        return $query->whereBetween('years_experience', [48, 53]);
+    }
+
+    public function scopeFiftyFourYears($query)
+    {
+        return $query->whereBetween('years_experience', [54, 59]);
+    }
+
+    public function scopeSixtyYears($query)
+    {
+        return $query->whereBetween('years_experience', [60, 65]);
+    }
+
+    public function scopeUpdatedAt($query)
+    {
+        return $query->whereDate('updated_at', date('y-m-d'))->get();
+    }
+
 }

@@ -67,7 +67,8 @@
             </div>
             <div class="col-md-12">
                 <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
-                    SUBMIT</button>
+                    SUBMIT <i class="fas fa-paper-plane ml-1"></i>
+                </button>
             </div>
         </div>
         </form>
