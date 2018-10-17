@@ -21,25 +21,41 @@ class DatabaseSeeder extends Seeder
         // factory(App\Speciality::class, 1)->create();
 
         factory(App\Treatment::class, 3)->create();
-
-        // factory(App\Facility::class, 1)->create();
-
-        factory(App\Hospital::class, 1)->create();
-
-        factory(App\Department::class, 1)->create();
-
-        // factory(App\Doctor::class, 1)->create();
-
         
 
-        factory(App\Hospital::class, 9)->create()->each(function($hospital) {
-             factory(App\Facility::class, 3)->make()->each(function($facility) use ($hospital) {
-                  $hospital->facilities()->save($facility);
-            });
-             factory(App\Department::class, 2)->make()->each(function($dept) use ($hospital) {
-                  $hospital->departments()->save($dept);
-            });
+        factory(App\Hospital::class, 10)->create()->each(function($hospital) {
+
+                $hospital->departments()->saveMany(
+                  factory(App\Department::class, 10)->make(['hospital_id' => null])
+                );
+
+                $hospital->comforts()->saveMany(
+                  factory(App\Comfort::class, rand(1,20))->make(['hospital_id' => null])
+                );
+
+                $hospital->money_matters()->saveMany(
+                  factory(App\MoneyMatter::class, rand(1,10))->make(['hospital_id' => null])
+                );
+
+                $hospital->foods()->saveMany(
+                  factory(App\Food::class, rand(1,5))->make(['hospital_id' => null])
+                );
+
+                $hospital->treatment_relateds()->saveMany(
+                  factory(App\TreatmentRelated::class, rand(1,15))->make(['hospital_id' => null])
+                );
+
+                $hospital->languages()->saveMany(
+                  factory(App\Language::class, rand(1,15))->make(['hospital_id' => null])
+                );
+
+                $hospital->transportations()->saveMany(
+                  factory(App\Transportation::class, rand(1,10))->make(['hospital_id' => null])
+                );
+            
         });
+
+        // factory(App\Comfort::class, 15)->create();
 
         factory(App\Doctor::class, 50)->create()->each(function($doctor) {
           factory(App\Treatment::class, 5)->make()->each(function($treatment) use ($doctor) {

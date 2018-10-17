@@ -8,14 +8,18 @@ class Hospital extends Model
 {
     protected $fillable = [
         'name',
+        'location_id',
         'about',
         'bed',
+        'image',
+        'icu_bed',
         'established',
         'achievment',
         'infrastructure',
+        'address',
         'slug'
     ];
-
+// RELATIONSHIPS
     public function doctors()
     {
     	return $this->hasMany(Doctor::class);
@@ -38,12 +42,37 @@ class Hospital extends Model
 
     public function departments()
     {
-        return $this->belongsToMany(Department::class);
+        return $this->hasMany(Department::class);
     }
 
-    public function facilities()
+    public function comforts()
     {
-        return $this->belongsToMany(Facility::class);
+        return $this->hasMany(Comfort::class);
+    }
+
+    public function money_matters()
+    {
+        return $this->hasMany(MoneyMatter::class);
+    }
+
+    public function foods()
+    {
+        return $this->hasMany(Food::class);
+    }
+
+    public function treatment_relateds()
+    {
+        return $this->hasMany(TreatmentRelated::class);
+    }
+
+    public function languages()
+    {
+        return $this->hasMany(Language::class);
+    }
+
+    public function transportations()
+    {
+        return $this->hasMany(Transportation::class);
     }
 
 // OTHER HOSPITALS

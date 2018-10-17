@@ -180,6 +180,9 @@ h2.accordion-menu {
 			    </div>
 			    <ul class="submenuItems">
 				      @foreach ($departments as $department)
+					      	@foreach ($department->doctors as $doctor)
+					    			{{ $doctor->name }}
+					    	@endforeach
 				    		<li><a href="">{{ $department->name }} ({{ $department->doctors->count() }} Dr.)</a></li>
 				      @endforeach
 				     {{ $departments->links() }}

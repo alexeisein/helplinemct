@@ -9,35 +9,7 @@ use App\message;
 
 class PageController extends Controller
 {
-    public function index()
-    {
-    	return view('pages.index');
-    }
-    // 
-	public function facilities()
-    {
-    	return view('pages.facilities');
-    }
-
-    public function about()
-    {
-    	return view('pages.about');
-    }
-
-    public function testimonies()
-    {
-    	return view('pages.testimonies');
-    }
-
-    public function accommodation()
-    {
-    	return view('pages.accommodation');
-    }
-
-    public function getContact()
-    {
-    	return view('pages.contact');
-    }
+    
 
     public function postContact(Request $request){
 
@@ -80,26 +52,6 @@ class PageController extends Controller
     }
     
 
-    public function specialities()
-    {
-    	return view('pages.specialities');
-    }
-
-    public function keyareas()
-    {
-    	return view('pages.keyareas');
-    }
-
-    public function services()
-    {
-    	return view('pages.services');
-    }
-
-    public function appointment()
-    {
-    	return view('pages.appointment');
-    }
-
     public function postAppointment(Request $request)
     {
         $data = $request->validate([
@@ -136,11 +88,6 @@ class PageController extends Controller
         mail('appointment@helplinemedicalcare.com', 'New Appointment Email', $body, $headers);
         session()->flash('success', 'Message has been sent. Thank you');
         return redirect()->back();
-    }
-    // Offline
-    public function offline()
-    {
-    	return view('offline.offline');
     }
 
 }

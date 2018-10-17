@@ -77,6 +77,20 @@
 		</div>
 	</div>
 
+	<div class="col-lg-12">
+		<br><hr><br>
+	</div>
+
+	<div class="containter">
+		<div class="row">
+			<div class="col-lg-3">
+				<h3>Hospitals</h3>
+				
+
+			</div>
+		</div>
+	</div>
+
 	<!-- team -->	<!-- Our specialists -->
 	@include('partials.ourteam')
 	<!-- //team -->	<!-- //Our specialists -->

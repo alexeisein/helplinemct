@@ -16,6 +16,8 @@
 	{{-- Navigation --}}
 	<div style="margin-top: 200px;"><h1 class="text-center" style="font-family:'Helvetica neue'; font-weight: lighter; "><i class="fas fa-bed fa-heading"></i> Medical Treatments & Cost</h1><hr></div><br>
 
+	@include('partials.treatment_search')
+
 	<div class="">
 		<table class="table">
 			<thead>

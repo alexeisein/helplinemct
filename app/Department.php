@@ -9,7 +9,7 @@ class Department extends Model
     protected $fillable = [
         'name',
         'description',
-        'photo',
+        'image',
         'slug',
     ];
 
@@ -18,10 +18,14 @@ class Department extends Model
     	return $this->hasMany(Doctor::class);
     }
 
-    public function hospitals()
+    public function hospital()
     {
-    	return $this->belongsToMany(Hospital::class);
+    	return $this->belongsTo(Hospital::class);
     }
 
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
     
 }

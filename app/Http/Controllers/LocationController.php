@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Location;
 
 class LocationController extends Controller
 {
@@ -13,7 +14,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::orderBy('id')->paginate(25);
+        return view('location.index')->withLocations($locations);
     }
 
     /**
@@ -23,7 +25,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('location.create');
     }
 
     /**
@@ -34,7 +36,21 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'city' => 'required|max:100|min:2',
+            'state' => 'required|max:100|min:2',
+            // 'slug' => 'required|max:100|min:2'
+        ]);
+
+        $location = Location::create([
+            'city' => $request->city,
+            'state' => $request->state,
+            'slug' => str_slug($request->city .'-' .$request->state),
+        ]);
+
+        session()->flash('success_create', $location->city ." City created successfully!");
+        return redirect()->back();
+        
     }
 
     /**
@@ -43,10 +59,10 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,7 +72,9 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $location = Location::where('id', $id)->firstOrFail();
+        $location = Location::findOrFail($id);
+        return view('location.edit', compact('location'));
     }
 
     /**
@@ -68,7 +86,20 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $this->validate($request, [
+            'city' => 'required|max:100|min:2',
+            'state' => 'required|max:100|min:2',
+        ]);
+
+        Location::where('id', $id)->update([
+            'city' => $request->city,
+            'state' => $request->state,
+            'slug' => str_slug($request->city .'-' .$request->state),
+        ]);
+
+        session()->flash('success_update', 'Update Successful !');
+        return redirect()->back();
     }
 
     /**
@@ -77,8 +108,15 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        try{
+            $location = Location::where('slug', $slug)->delete();
+            session()->flash('success_delete', ' Deleted Successfully');
+            return redirect()->route('location.index');
+
+        }catch(Exception $e){
+            return $e->getMessage();
+        }
     }
 }

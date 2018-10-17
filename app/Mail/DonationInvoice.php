@@ -7,18 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class contact_us extends Mailable
+class DonationInvoice extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $invoice;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(DonationInvoice $invoice)
     {
-        //
+        $this->invoice = $invoice;
     }
 
     /**
@@ -28,6 +29,7 @@ class contact_us extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contact_us');
+        return $this->from('invoice@freenation.com')
+            ->view('view.emails.invoice');
     }
 }

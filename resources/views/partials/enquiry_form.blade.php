@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" style="margin-top: 150px;">
     <div class="well well-sm">
         <form action="{{ route('page.enquiry') }}" method="post">
         	{{ csrf_field() }}

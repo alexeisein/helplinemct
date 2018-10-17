@@ -17,7 +17,7 @@ class CreateDoctorsTable extends Migration
             $table->increments('id');
             $table->integer('hospital_id')->unsigned()->nullable();
             $table->integer('department_id')->unsigned()->nullable();
-            $table->integer('location_id')->unsigned()->nullable();
+            $table->integer('location_id')->unsigned()->nullable()->onDelete('cascade');
             
             $table->string('name')->index();
             $table->string('dicipline');

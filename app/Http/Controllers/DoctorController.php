@@ -23,18 +23,15 @@ class DoctorController extends Controller
         $search = $request->input('search');
 
         $treatments = Treatment::orderBy('id')->with('doctors')->paginate(20);
-        // $doc = Doctor::orderBy('id')->with('treatments')->paginate(30);
-            // dd($doc);
-            // dd($treatments);
-        // foreach ($treatments as $treatment) {
-        //     echo $treatment->name .'<hr>';
-        //     // dd($treatment->doctors->count());
-        //     foreach ($treatment->doctors as $doctor) {
-        //         // echo $doctor->name;
-        //     }
-        // }
+        
         $departments = Department::orderBy('name')->with('doctors')->paginate(20);
         // dd($departments);
+        foreach ($departments as $department) {
+            dump($department->doctors);
+            // foreach ($department->doctors as $doctor) {
+            //      dd($doctor);
+            //  }
+        }
         $hospitals = Hospital::orderBy('name')->with('doctors')->paginate(20);
 
 // SORT DOCTORS BY YEARS OF EXPERIENCE
@@ -63,6 +60,13 @@ class DoctorController extends Controller
             'five_years','six_years','twelve_years','eighteen_years','twentyfour_years','thirty_years','thirtysix_years','fourtytwo_years','fourtyeight_years','fiftyfour_years','sixty_years',
         ]));
     }
+
+
+    // SHOW ALL DEOCTORS BY DEPARTMENT
+    // public function docDept($deptname Department $department)
+    // {
+    //     Department::where('slug', $slug)->with('doctors')->get();
+    // }
 
     /**
      * Show the form for creating a new resource.

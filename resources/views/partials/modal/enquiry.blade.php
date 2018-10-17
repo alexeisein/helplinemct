@@ -64,5 +64,5 @@
 </div>
 
 <div class="text-center">
-    <a href="" class="btn btn-danger btn-rounded mb-4 btn-lg" data-toggle="modal" data-target="#modalContactForm">Send Enquiry</a>
+    <a href="" id="modalEnquiry" class="btn btn-danger btn-rounded mb-4 btn-lg" data-toggle="modal" data-target="#modalContactForm">Send Enquiry</a>
 </div>

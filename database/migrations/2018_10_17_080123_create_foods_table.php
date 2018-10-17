@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFacilitiesTable extends Migration
+class CreateFoodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateFacilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('facilities', function (Blueprint $table) {
+        Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('services')->nullable();
-            $table->string('slug')->unique()->nullable();
+            $table->integer('hospital_id')->unsigned();
+            $table->string('name');
             $table->timestamps();
+
+            $table->foreign('hospital_id')->references('id')->on('hospitals');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateFacilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facilities');
+        Schema::dropIfExists('foods');
     }
 }

@@ -9,7 +9,7 @@ class Location extends Model
     protected $fillable = [
     	'city',
     	'state',
-    	'country',
+    	// 'country',
     	'slug'
     ];
 
@@ -37,5 +37,4 @@ class Location extends Model
         return ucwords($country);
     }
 
-    
 }

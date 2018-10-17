@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facility;
+use App\Hospital;
 use Illuminate\Http\Request;
 
 class FacilityController extends Controller
@@ -14,7 +15,10 @@ class FacilityController extends Controller
      */
     public function index()
     {
-        //
+        $hospitals = Hospital::orderBy('id')->get();
+        // dd($hospital->facilities);
+        // $facilities = Facility::orderBy('id')->paginate(10);
+        // return view('facility.index')->withFacilities($facilities);
     }
 
     /**
@@ -35,7 +39,7 @@ class FacilityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
