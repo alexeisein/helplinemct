@@ -12,16 +12,28 @@
 			<!-- Navigation -->
 			@include('partials.nav') 
 		</div>	
-	</div>	
-	{{-- Navigation --}}
-	<div class="col-lg-8" style="margin-top: 200px;">
-		<h2 class="text-center">{{ $treatment->name }}</h2><hr>
-		<div style="width: 320px; height: 250px;" id="treatment-img">
-			<img src="" alt="{{ $treatment->name }}" title="{{ $treatment->name }}" style="height: 100%; width: 100%;" class="img-thumbnail">
-		</div>
-		<hr>
-		<div><p></p></div>
+	</div>
 
+	{{-- Navigation --}}
+	<div style="margin-top: 200px;">
+		<h1 class="text-center" style="font-family:'Helvetica neue'; font-weight: lighter; "><i class="fas fa-hospital text-success"></i> {{ $treatment->name }}</h1><hr>
+	</div><br>
+
+	@include('partials.breadcrumbs.show',['showTitle' => $treatment->name, 'navUrl' => route('treatment.index'), 'modulName' => 'Treatments'])
+	<br><hr>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div style="width: 540px; height: 480px;" id="treatment-img">
+				<h4><strong class="text-primary">{{ strtoupper($treatment->name) }}</strong></h4><br>
+				<a href="{{ URL::to('storage/treatments/'.$treatment->image) }}" target="_blank"><img src="{{ asset('storage/treatments/'.$treatment->image) }}" alt="{{ $treatment->name }}" title="{{ $treatment->name }}" style="height: 100%; width: 100%;" class="img-thumbnail"></a>
+			</div>
+		</div>
+
+		<div class="col-lg-6">
+			<h4><strong class="text-primary"></strong></h4><br>
+			<p>{{ $treatment->description }}</p>
+		</div>
 	</div>
 
 	<br><hr><br>

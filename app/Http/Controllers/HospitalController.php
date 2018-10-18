@@ -76,7 +76,7 @@ class HospitalController extends Controller
                 ]
             );
 
-            session()->flash('success_create', " New Hospital Created Successfully!");
+            session()->flash('success_create', $hospital ." Hospital Created Successfully!");
              return redirect()->back();
         }
     }

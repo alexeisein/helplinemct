@@ -13,15 +13,12 @@
 			@include('partials.nav') 
 		</div>	
 	</div>	
-	{{-- Navigation --}}
+	{{--Navi --}}
 	<div style="margin-top: 200px;" class="col-lg-12"><h1 class="text-center" style="font-family:'Helvetica neue'; font-weight: lighter; "><i class="fa fa-building text-danger"></i> Departments</h1><hr>
 	</div>
 
-	<div style="border:1px dotted #3e3e3e; padding: 5px; border-radius: 10px;" class="col-lg-12">
-		<p class="label label-default" style="letter-spacing: 2px;"><a href="{{ route('homepage') }}" style="color: #fff;"><i class="fa fa-home"></i> Home</a></p>
-		<p class="label label-default" style="letter-spacing: 2px;"><a href="{{ route('department.index') }}" style="color: #fff;">Departments</a></p>
-		<p class="label label-info" style="letter-spacing: 2px;color: #fff;">{{ $department->name }}</p>
-	</div>
+	{{-- Breadcrumbs --}}
+	@include('partials.breadcrumbs.show', ['navUrl' => route('department.index'), 'showTitle' => $department->name, 'modulName' => 'Departments'])<br>
 
 	<div class="col-lg-12"><br></div>
 

@@ -19,7 +19,7 @@ class CreateHospitalsTable extends Migration
             
             $table->string('name')->index();
             $table->text('about');
-            $table->string('image')->nullable()->default('hospital.jpg');
+            $table->string('image')->default('hospital.jpg');
             $table->integer('bed')->unsigned();
             $table->integer('icu_bed')->unsigned();
             $table->integer('established')->unsigned()->nullable();

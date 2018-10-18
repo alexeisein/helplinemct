@@ -17,10 +17,9 @@
 	<div style="margin-top: 200px;"><h1 class="text-center" style="font-family:'Helvetica neue'; font-weight: lighter; "><i class="fa fa-building text-danger"></i> Departments</h1><hr>
 	</div><br>
 
-	<div style="border:1px dotted #3e3e3e; padding: 5px; border-radius: 10px;">
-		<p class="label label-default" style="letter-spacing: 2px;"><a href="{{ route('homepage') }}" style="color: #fff;"><i class="fa fa-home"></i> Home</a></p>
-		<p class="label label-info" style="letter-spacing: 2px;color: #fff;">Departments</p>
-	</div><br>
+{{-- BreadCrumbs --}}
+	@include('partials.breadcrumbs.index', ['indexTitle' => 'Departments'])
+	<br>
 
 	@include('partials.flash.success_create')
 
@@ -58,7 +57,8 @@
 									</a>
 								</div>
 							</td>
-							<td><a class="btn btn-warning btn-sm btn-block" href="{{ route('department.edit', $department->id) }}">Edit</a></td>
+							<td><a class="btn btn-warning btn-sm btn-block" href="{{ route('department.edit', $department->id) }}">Edit</a>
+							</td>
 							<td>
 								<form action="{{ route('department.destroy', $department->slug) }}" method="post" class="form-vertical">
 									@csrf

@@ -41,8 +41,8 @@
 		            {{-- About hospital --}}
 		            <div class="md-form{{ $errors->has('about') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-info prefix grey-text"></i>
-		                <label data-error="wrong" data-success="right" for="form8">About Hospital</label>
-		                <textarea type="text" id="form8" name="about" class="md-textarea form-control" rows="4" placeholder="About Hospital">{{ old('about') }}</textarea>
+		                <label data-error="wrong" data-success="right" for="about">About Hospital</label>
+		                <textarea type="text" id="about" name="about" class="md-textarea form-control" rows="4" placeholder="About Hospital">{{ old('about') }}</textarea>
 		                @if ($errors->has('about'))
 		                	<span class="help-block">
 		                		<strong>{{ $errors->first('about') }}</strong>
@@ -55,7 +55,7 @@
 		            <div class="md-form{{ $errors->has('achievment') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-trophy prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="achievment">Achievment</label>
-		                <textarea type="text" id="form8" name="achievment" class="md-textarea form-control" rows="4" placeholder="Achievment Hospital">{{ old('achievment') }}</textarea>
+		                <textarea type="text" id="achievment" name="achievment" class="md-textarea form-control" rows="4" placeholder="Achievment Hospital">{{ old('achievment') }}</textarea>
 		                @if ($errors->has('achievment'))
 		                	<span class="help-block">
 		                		<strong>{{ $errors->first('achievment') }}</strong>
@@ -68,7 +68,7 @@
 		            <div class="md-form{{ $errors->has('infrastructure') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-industry prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="infrastructure">Infrastructure</label>
-		                <textarea type="text" id="form8" name="infrastructure" class="md-textarea form-control" rows="4" placeholder="Infrastructure Hospital">{{ old('infrastructure') }}</textarea>
+		                <textarea type="text" id="infrastructure" name="infrastructure" class="md-textarea form-control" rows="4" placeholder="Infrastructure Hospital">{{ old('infrastructure') }}</textarea>
 		                @if ($errors->has('infrastructure'))
 		                	<span class="help-block">
 		                		<strong>{{ $errors->first('infrastructure') }}</strong>
@@ -81,7 +81,7 @@
 		            <div class="md-form{{ $errors->has('address') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-address-card prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="address">Address</label>
-		                <textarea type="text" id="form8" name="address" class="md-textarea form-control" rows="4" placeholder="Address Hospital">{{ old('address') }}</textarea>
+		                <textarea type="text" id="address" name="address" class="md-textarea form-control" rows="4" placeholder="Address Hospital">{{ old('address') }}</textarea>
 		                @if ($errors->has('address'))
 		                	<span class="help-block">
 		                		<strong>{{ $errors->first('address') }}</strong>
@@ -111,7 +111,7 @@
 		            <div class="md-form mb-5{{ $errors->has('bed') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-bed prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="bed">Number Of Beds</label>
-		                <input type="text" id="form34" name="bed" class="form-control validate enquiry-form" value="{{ old('bed') }}" placeholder=" bed">
+		                <input type="text" id="bed" name="bed" class="form-control validate enquiry-form" value="{{ old('bed') }}" placeholder=" bed">
 
 		                @if ($errors->has('bed'))
 		                	<span class="help-block">
@@ -125,7 +125,7 @@
 		            <div class="md-form mb-5{{ $errors->has('icu_bed') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-bed prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="icu_bed">Number Of ICU Beds</label>
-		                <input type="text" id="form34" name="icu_bed" class="form-control validate enquiry-form" value="{{ old('icu_bed') }}" placeholder=" icu_bed">
+		                <input type="text" id="icu_bed" name="icu_bed" class="form-control validate enquiry-form" value="{{ old('icu_bed') }}" placeholder=" icu_bed">
 
 		                @if ($errors->has('icu_bed'))
 		                	<span class="help-block">
@@ -139,7 +139,7 @@
 		            <div class="md-form mb-5{{ $errors->has('established') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-bed prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="established">Year Established</label>
-		                <input type="text" id="form34" name="established" class="form-control validate enquiry-form" value="{{ old('established') }}" placeholder=" established">
+		                <input type="text" id="established" name="established" class="form-control validate enquiry-form" value="{{ old('established') }}" placeholder=" established">
 
 		                @if ($errors->has('established'))
 		                	<span class="help-block">

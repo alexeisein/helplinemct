@@ -54,7 +54,11 @@ Route::view('/maintenance', 'pages.maintenance');
 
 //TREATMENT
 Route::get('/treatment', "TreatmentController@index")->name('treatment.index');
+Route::post('/treatment', "TreatmentController@store")->name('treatment.store');
 Route::get('/treatment/{treatmentSlug}', "TreatmentController@show")->name('treatment.show');
+Route::patch('/treatment/{treatment}', "TreatmentController@update")->name('treatment.update');
+Route::delete('/treatment/{treatment}', "TreatmentController@destroy")->name('treatment.destroy');
+Route::get('/treatment/{treatment}/edit', "TreatmentController@edit")->name('treatment.edit');
 
 // HOSPITALS
 Route::get('/hospital', "HospitalController@index")->name('hospital.index');

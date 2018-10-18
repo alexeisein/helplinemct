@@ -9,8 +9,13 @@ class Treatment extends Model
     protected $fillable = [
         'name',
         'description',
-        'photo',
+        'image',
         'slug',
+        'cost',
+        'travellers',
+        'inpatient_duration',
+        'outpatient_duration',
+        'total_duration'
     ];
 
 

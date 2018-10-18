@@ -18,10 +18,12 @@ class CreateTreatmentsTable extends Migration
             $table->string('name');
             $table->decimal('cost', 8, 2)->unsigned()->nullable();
             $table->integer('travellers')->unsigned();
+            $table->text('description');
             $table->integer('inpatient_duration')->unsigned();
             $table->integer('outpatient_duration')->unsigned();
             $table->integer('total_duration')->unsigned();
             $table->string('slug')->unique()->nullable();
+            $table->string('image')->default('treatment.jpg');
             $table->timestamps();
 
         });
