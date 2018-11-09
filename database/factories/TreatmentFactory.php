@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(FreeNation\Treatment::class, function (Faker $faker) {
+$factory->define(Hmct\Treatment::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(3),
         'cost' => $faker->numberBetween(100, 100000),

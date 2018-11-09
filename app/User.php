@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation;
+namespace Hmct;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

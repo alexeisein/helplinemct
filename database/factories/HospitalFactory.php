@@ -1,9 +1,9 @@
 <?php
 
-use FreeNation\Location;
+use Hmct\Location;
 use Faker\Generator as Faker;
 
-$factory->define(FreeNation\Hospital::class, function (Faker $faker) {
+$factory->define(Hmct\Hospital::class, function (Faker $faker) {
     return [
     	'location_id' => function(){
     		return Location::all()->random();

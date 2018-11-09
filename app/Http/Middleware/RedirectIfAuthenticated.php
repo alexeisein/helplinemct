@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Http\Middleware;
+namespace Hmct\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

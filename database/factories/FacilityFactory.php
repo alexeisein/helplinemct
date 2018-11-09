@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use FreeNation\Hospital;
+use Hmct\Hospital;
 
-$factory->define(FreeNation\Facility::class, function (Faker $faker) {
+$factory->define(Hmct\Facility::class, function (Faker $faker) {
 	 
 	// identifier();
 	

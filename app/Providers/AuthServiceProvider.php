@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Providers;
+namespace Hmct\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'FreeNation\Model' => 'FreeNation\Policies\ModelPolicy',
+        'Hmct\Model' => 'Hmct\Policies\ModelPolicy',
     ];
 
     /**

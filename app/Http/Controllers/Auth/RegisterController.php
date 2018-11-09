@@ -1,9 +1,9 @@
 <?php
 
-namespace FreeNation\Http\Controllers\Auth;
+namespace Hmct\Http\Controllers\Auth;
 
-use FreeNation\User;
-use FreeNation\Http\Controllers\Controller;
+use Hmct\User;
+use Hmct\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \FreeNation\User
+     * @return \Hmct\User
      */
     protected function create(array $data)
     {

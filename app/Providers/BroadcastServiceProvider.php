@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Providers;
+namespace Hmct\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

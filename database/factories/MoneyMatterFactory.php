@@ -1,9 +1,9 @@
 <?php
 
-use FreeNation\Hospital;
+use Hmct\Hospital;
 use Faker\Generator as Faker;
 
-$factory->define(FreeNation\MoneyMatter::class, function (Faker $faker) {
+$factory->define(Hmct\MoneyMatter::class, function (Faker $faker) {
     return [
     	'hospital_id' => function(){
     		return Hospital::all()->random();

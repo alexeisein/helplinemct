@@ -1,9 +1,9 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Comfort;
-use FreeNation\Hospital;
+use Hmct\Comfort;
+use Hmct\Hospital;
 
 use Illuminate\Http\Request;
 
@@ -60,7 +60,7 @@ class ComfortController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Comfort  $comfort
+     * @param  \Hmct\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function show(Comfort $comfort)
@@ -71,7 +71,7 @@ class ComfortController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Comfort  $comfort
+     * @param  \Hmct\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(Comfort $comfort)
@@ -83,7 +83,7 @@ class ComfortController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Comfort  $comfort
+     * @param  \Hmct\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -106,7 +106,7 @@ class ComfortController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Comfort  $comfort
+     * @param  \Hmct\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

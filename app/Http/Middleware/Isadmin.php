@@ -1,10 +1,10 @@
 <?php
 
-namespace FreeNation\Http\Middleware;
+namespace Hmct\Http\Middleware;
 
 use Closure;
 use Auth;
-use FreeNation\User;
+use Hmct\User;
 
 class Isadmin
 {

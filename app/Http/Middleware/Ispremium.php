@@ -1,9 +1,9 @@
 <?php
 
-namespace FreeNation\Http\Middleware;
+namespace Hmct\Http\Middleware;
 
 use Closure;
-use FreeNation\User;
+use Hmct\User;
 use Auth;
 class Ispremium
 {

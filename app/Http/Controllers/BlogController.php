@@ -1,8 +1,8 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Blog;
+use Hmct\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -41,7 +41,7 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Blog  $blog
+     * @param  \Hmct\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function show(Blog $blog)
@@ -52,7 +52,7 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Blog  $blog
+     * @param  \Hmct\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function edit(Blog $blog)
@@ -64,7 +64,7 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Blog  $blog
+     * @param  \Hmct\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, News $blog)
@@ -75,7 +75,7 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Blog  $blog
+     * @param  \Hmct\Blog  $blog
      * @return \Illuminate\Http\Response
      */
     public function destroy(Blog $blog)

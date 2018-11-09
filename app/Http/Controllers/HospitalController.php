@@ -1,10 +1,10 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Hospital;
-use FreeNation\Location;
-use FreeNation\Comfort;
+use Hmct\Hospital;
+use Hmct\Location;
+use Hmct\Comfort;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -85,7 +85,7 @@ class HospitalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Hospital  $hospital
+     * @param  \Hmct\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -131,7 +131,7 @@ class HospitalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Hospital  $hospital
+     * @param  \Hmct\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function edit(Hospital $hospital)
@@ -143,7 +143,7 @@ class HospitalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Hospital  $hospital
+     * @param  \Hmct\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Hospital $hospital)
@@ -154,7 +154,7 @@ class HospitalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Hospital  $hospital
+     * @param  \Hmct\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function destroy(Hospital $hospital)

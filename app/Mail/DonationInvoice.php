@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Mail;
+namespace Hmct\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

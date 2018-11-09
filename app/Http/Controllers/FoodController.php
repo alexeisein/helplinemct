@@ -1,9 +1,9 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Food;
-use FreeNation\Hospital;
+use Hmct\Food;
+use Hmct\Hospital;
 
 use Illuminate\Http\Request;
 
@@ -41,7 +41,7 @@ class FoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Comfort  $comfort
+     * @param  \Hmct\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(Food $food)
@@ -70,7 +70,7 @@ class FoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Food  $comfort
+     * @param  \Hmct\Food  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

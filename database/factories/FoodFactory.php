@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use FreeNation\Hospital;
+use Hmct\Hospital;
 
-$factory->define(FreeNation\Food::class, function (Faker $faker) {
+$factory->define(Hmct\Food::class, function (Faker $faker) {
     return [
         'hospital_id' => function(){
     		return Hospital::all()->random();

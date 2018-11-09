@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Providers;
+namespace Hmct\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'FreeNation\Events\Event' => [
-            'FreeNation\Listeners\EventListener',
+        'Hmct\Events\Event' => [
+            'Hmct\Listeners\EventListener',
         ],
     ];
 

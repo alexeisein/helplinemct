@@ -1,12 +1,12 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Doctor;
-use FreeNation\Treatment;
-use FreeNation\Department;
-use FreeNation\Location;
-use FreeNation\Hospital;
+use Hmct\Doctor;
+use Hmct\Treatment;
+use Hmct\Department;
+use Hmct\Location;
+use Hmct\Hospital;
 use Storage;
 use Illuminate\Http\Request;
 
@@ -143,7 +143,7 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Doctor  $doctor
+     * @param  \Hmct\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -158,7 +158,7 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Doctor  $doctor
+     * @param  \Hmct\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
     public function edit(Doctor $doctor)
@@ -170,7 +170,7 @@ class DoctorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Doctor  $doctor
+     * @param  \Hmct\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Doctor $doctor)
@@ -181,7 +181,7 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Doctor  $doctor
+     * @param  \Hmct\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
     public function destroy(Doctor $doctor)

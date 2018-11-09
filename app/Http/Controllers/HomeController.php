@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
 use Illuminate\Http\Request;
 

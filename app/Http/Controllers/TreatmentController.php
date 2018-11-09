@@ -1,9 +1,9 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Treatment;
-use FreeNation\Doctor;
+use Hmct\Treatment;
+use Hmct\Doctor;
 use Storage;
 use Illuminate\Http\Request;
 
@@ -79,7 +79,7 @@ class TreatmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Treatment  $treatment
+     * @param  \Hmct\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -91,7 +91,7 @@ class TreatmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Treatment  $treatment
+     * @param  \Hmct\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function edit(Treatment $treatment, Doctor $doctor)
@@ -108,7 +108,7 @@ class TreatmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Treatment  $treatment
+     * @param  \Hmct\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Treatment $treatment)
@@ -165,7 +165,7 @@ class TreatmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Treatment  $treatment
+     * @param  \Hmct\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function destroy(Treatment $treatment)

@@ -1,11 +1,11 @@
 <?php
 
-use FreeNation\Hospital;
-use FreeNation\Department;
-use FreeNation\Location;
+use Hmct\Hospital;
+use Hmct\Department;
+use Hmct\Location;
 use Faker\Generator as Faker;
 
-$factory->define(FreeNation\Doctor::class, function (Faker $faker) {
+$factory->define(Hmct\Doctor::class, function (Faker $faker) {
 
     return [
     	'hospital_id' => function(){

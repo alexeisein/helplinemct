@@ -1,8 +1,8 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Speciality;
+use Hmct\Speciality;
 use Illuminate\Http\Request;
 
 class SpecialityController extends Controller
@@ -41,7 +41,7 @@ class SpecialityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Speciality  $speciality
+     * @param  \Hmct\Speciality  $speciality
      * @return \Illuminate\Http\Response
      */
     public function show(Speciality $speciality)
@@ -52,7 +52,7 @@ class SpecialityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Speciality  $speciality
+     * @param  \Hmct\Speciality  $speciality
      * @return \Illuminate\Http\Response
      */
     public function edit(Speciality $speciality)
@@ -64,7 +64,7 @@ class SpecialityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Speciality  $speciality
+     * @param  \Hmct\Speciality  $speciality
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Speciality $speciality)
@@ -75,7 +75,7 @@ class SpecialityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Speciality  $speciality
+     * @param  \Hmct\Speciality  $speciality
      * @return \Illuminate\Http\Response
      */
     public function destroy(Speciality $speciality)

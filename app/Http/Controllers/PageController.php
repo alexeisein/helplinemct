@@ -1,11 +1,11 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mail;
-use FreeNation\User;
-use FreeNation\message;
+use Hmct\User;
+use Hmct\message;
 
 class PageController extends Controller
 {

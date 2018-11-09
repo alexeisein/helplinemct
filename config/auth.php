@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => FreeNation\User::class,
+            'model' => Hmct\User::class,
         ],
 
         // 'users' => [

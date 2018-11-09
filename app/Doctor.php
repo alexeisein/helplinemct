@@ -1,7 +1,7 @@
 <?php
 
-namespace FreeNation;
-use FreeNation\Department;
+namespace Hmct;
+use Hmct\Department;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -78,7 +78,7 @@ class Doctor extends Model
         return ucwords($value);
     }
 
-// another method. but at view, FreeNation\Doctor::ucwordsField($edu)
+// another method. but at view, Hmct\Doctor::ucwordsField($edu)
     // public static function ucwordsField($edu)
     // {
     //     return ucwords($edu);

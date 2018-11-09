@@ -1,10 +1,10 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
 use Illuminate\Http\Request;
-use FreeNation\Location;
-use FreeNation\Doctor;
+use Hmct\Location;
+use Hmct\Doctor;
 
 class SearchController extends Controller
 {

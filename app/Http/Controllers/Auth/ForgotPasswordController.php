@@ -1,8 +1,8 @@
 <?php
 
-namespace FreeNation\Http\Controllers\Auth;
+namespace Hmct\Http\Controllers\Auth;
 
-use FreeNation\Http\Controllers\Controller;
+use Hmct\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

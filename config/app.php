@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        FreeNation\Providers\AppServiceProvider::class,
-        FreeNation\Providers\AuthServiceProvider::class,
-        // FreeNation\Providers\BroadcastServiceProvider::class,
-        FreeNation\Providers\EventServiceProvider::class,
-        FreeNation\Providers\RouteServiceProvider::class,
+        Hmct\Providers\AppServiceProvider::class,
+        Hmct\Providers\AuthServiceProvider::class,
+        // Hmct\Providers\BroadcastServiceProvider::class,
+        Hmct\Providers\EventServiceProvider::class,
+        Hmct\Providers\RouteServiceProvider::class,
 
     ],
 

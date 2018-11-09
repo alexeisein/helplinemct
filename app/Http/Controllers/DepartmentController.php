@@ -1,9 +1,9 @@
 <?php
 
-namespace FreeNation\Http\Controllers;
+namespace Hmct\Http\Controllers;
 
-use FreeNation\Department;
-use FreeNation\Hospital;
+use Hmct\Department;
+use Hmct\Hospital;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -74,7 +74,7 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \FreeNation\Department  $department
+     * @param  \Hmct\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -87,7 +87,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \FreeNation\Department  $department
+     * @param  \Hmct\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function edit(Department $department)
@@ -101,7 +101,7 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \FreeNation\Department  $department
+     * @param  \Hmct\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -152,7 +152,7 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \FreeNation\Department  $department
+     * @param  \Hmct\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function destroy($slug)

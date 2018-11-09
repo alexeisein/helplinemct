@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation;
+namespace Hmct;
 
 use Illuminate\Database\Eloquent\Model;
 

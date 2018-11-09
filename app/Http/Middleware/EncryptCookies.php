@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeNation\Http\Middleware;
+namespace Hmct\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 
