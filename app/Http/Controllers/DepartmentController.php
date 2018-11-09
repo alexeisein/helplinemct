@@ -1,14 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Department;
+use FreeNation\Department;
+use FreeNation\Hospital;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 // use Illuminate\Http\UploadedFile;
 
 class DepartmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin')->except(['index','show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +23,9 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::orderBy('id')->paginate(10);
-        return view('department.index')->withDepartments($departments);
+        $hospitals = Hospital::pluck('id', 'name');
+        
+        return view('department.index')->withDepartments($departments)->withHospitals($hospitals);
     }
 
     /**
@@ -51,6 +59,7 @@ class DepartmentController extends Controller
             $image->storeAs('public/departments/',$imageName);
 
             $department = Department::create([
+                'hospital_id' => $request->hospital_id,
                 'name' => $request->name,
                 'description' => $request->description,
                 'image' => $imageName,
@@ -65,7 +74,7 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Department  $department
+     * @param  \FreeNation\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -78,26 +87,27 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Department  $department
+     * @param  \FreeNation\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function edit(Department $department)
     {
-        return view('department.edit', compact('department'));
+        $hospitals = Hospital::pluck('id', 'name');
+        // dd($hospital);
+        return view('department.edit', compact('department', 'hospitals'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Department  $department
+     * @param  \FreeNation\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        $department = Department::findOrFail($id);
 // Name's unique. don't validate name if name input matches with DB name field.
+        $department = Department::findOrFail($id);
         if ($department->name == $request->name) {
             $this->validate($request, [
                 'description' => 'required|max:2000|min:2',
@@ -119,29 +129,30 @@ class DepartmentController extends Controller
                 $image->storeAs('public/departments/',$imageName);//save it in the drive with defined name.
 
                 // $oldImage = $department->image;
-                // $oldImage->storeAs('public/departments/',$imageName);
-                // $oldImage->image = $imageName;
-                // Storage::delete($oldImage);
+                // $oldImgPath = $oldImage->storeAs('public/departments/', $oldImage);
+                // $oldImage->image = $imageName; exclude this.
+                // Storage::delete($oldImgPath);
                 $department->update([
                     'image' => $imageName,
                 ]);
             }else{
 // Do this if user only wants to update other fields except image upload.
                 $department->update([
+                    'hospital_id' => $request->hospital_id,
                     'name' => $request->name,
                     'description' => $request->description,
                     'slug' => str_slug($request->name),
                 ]);
             }
 
-        session()->flash('success_update', 'Update Successful !');
+        session()->flash('success_update', ' Department Upadted Successfully !');
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Department  $department
+     * @param  \FreeNation\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function destroy($slug)

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'FreeNation'),
+    'name' => env('APP_NAM', 'HelplineMedicalCare'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        FreeNation\Providers\AppServiceProvider::class,
+        FreeNation\Providers\AuthServiceProvider::class,
+        // FreeNation\Providers\BroadcastServiceProvider::class,
+        FreeNation\Providers\EventServiceProvider::class,
+        FreeNation\Providers\RouteServiceProvider::class,
 
     ],
 

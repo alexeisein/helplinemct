@@ -204,7 +204,9 @@
 	</div>
 </div>
 
-@include('partials.modal')
+<br>
+
+@include('partials.modal.enquiry')
 
 @include('partials.copyright')
 @endsection

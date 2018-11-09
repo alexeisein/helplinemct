@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace FreeNation;
 
 use Illuminate\Database\Eloquent\Model;
 

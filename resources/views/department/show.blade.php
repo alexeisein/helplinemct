@@ -37,14 +37,11 @@
 		</div>
 	</div>
 
-	<div class="col-lg-12">
-		<hr>
-	</div>
-
 	{{-- Show Other Departments --}}
         <div class="container">
-            <div>
-                <h2 style="text-align: left;">OTHER DEPARTMENTS</h2>
+        	<hr>
+            <div class="text-primary well">
+                <h2 style="text-align: left;"><strong>OTHER DEPARTMENTS</strong></h2>
             </div>
             <hr>
             @foreach ($otherDepartments as $otherDepartment)

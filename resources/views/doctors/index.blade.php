@@ -154,92 +154,21 @@ h2.accordion-menu {
 		<div class="row" style="margin-top: 100px;">
 
 		@include('partials.flash.error')
+		@include('partials.flash.success_create')
+
+		@auth
+			@if (Auth::user()->permission === 'admin')
+				@include('partials.modal.adddoctor')
+			@endif
+		@endauth
 			
-		<div class="col-md-3 agile_team_grid agile_team_grid2">
-			<div class="bg-primary" id="filter-wrap">
-				<h2 class="text-center"><i class="fas fa-filter"></i> FILTERS</h2>
-			</div>
-
-			{{-- <h2>Favorite books</h2> --}}
-			<ul class="accordion-menu">
-			  <li style="margin-left: 0;">
-			    <div class="dropdownlink"> By Treatment
-			      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-			    </div>
-			    <ul class="submenuItems">
-			    	@foreach ($treatments as $treatment)
-			    		<li><a href="#">{{ $treatment->name }} ({{ $treatment->doctors->count() }} Dr.)</a></li>
-			    	@endforeach
-			    	{{ $treatments->links() }}
-			    </ul>
-			  </li>
-
-			  <li>
-			    <div class="dropdownlink"> By Department
-			      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-			    </div>
-			    <ul class="submenuItems">
-				      @foreach ($departments as $department)
-					      	@foreach ($department->doctors as $doctor)
-					    			{{ $doctor->name }}
-					    	@endforeach
-				    		<li><a href="">{{ $department->name }} ({{ $department->doctors->count() }} Dr.)</a></li>
-				      @endforeach
-				     {{ $departments->links() }}
-			    </ul>
-			  </li>
-
-			  <li>
-			    <div class="dropdownlink"> By City
-			      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-			    </div>
-			    <ul class="submenuItems">
-			    	@foreach ($locations as $location)
-				    		<li><a href="{{ route('doctor.city') }}">{{ $location->city }} ({{ $location->doctors->count() }} Dr.)</a></li>
-				    @endforeach
-				   
-			    </ul>
-			  </li>
-
-			  <li>
-			    <div class="dropdownlink"> By Experience
-			      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-			    </div>
-			    <ul class="submenuItems">
-				    <li><a href="#">0 - 5 years ({{ $five_years->count() }} Dr.)</a></li>
-				    <li><a href="#">6 - 11 years ({{ $six_years->count() }} Dr.)</a></li>
-				    <li><a href="#">12 - 17 years ({{ $twelve_years->count() }} Dr.)</a></li>
-				    <li><a href="#">18 - 23 years ({{ $eighteen_years->count() }} Dr.)</a></li>
-				    <li><a href="#">24 - 29 years ({{ $twentyfour_years->count() }} Dr.)</a></li>
-				    <li><a href="#">30 - 35 years ({{ $thirty_years->count() }} Dr.)</a></li>
-				    <li><a href="#">36 - 41 years ({{ $thirtysix_years->count() }} Dr.)</a></li>
-				    <li><a href="#">42 - 47 years ({{ $fourtytwo_years->count() }} Dr.)</a></li>
-				    <li><a href="#">48 - 53 years ({{ $fourtyeight_years->count() }} Dr.)</a></li>
-				    <li><a href="#">54 - 59 years ({{ $fiftyfour_years->count() }} Dr.)</a></li>
-				    <li><a href="#">60 - 65 years ({{ $sixty_years->count() }} Dr.)</a></li>
-			    </ul>
-			  </li>
-
-			  <li>
-			    <div class="dropdownlink"> By Hospital
-			      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-			    </div>
-			    <ul class="submenuItems">
-			    	@foreach ($hospitals as $hospital)
-				    		<li><a href="">{{ $hospital->name }} ({{ $hospital->doctors->count() }} Dr.)</a></li>
-				      @endforeach
-				     {{ $hospitals->links() }}
-			    </ul>
-			  </li>
-			</ul>
+		{{-- @include('partials.doctor.filter') --}}
 	
-		</div>
-	
-		<div class="col-md-8">
+		<div class="col-md-12">
 			@foreach ($doctors as $doctor)
-		        <div class="col-md-4 agile_team_grid agile_team_grid2">
+		        <div class="col-md-3 agile_team_grid agile_team_grid2">
 					<div class="agile_team_grid_main">
-						<a href="{{ route('doctor.show', $doctor->slug) }}"><img src="{{ asset('storage/doctors/dr-ashok-seth.jpg') }}" alt="{{ asset('$doctor->name') }} " class="img-responsive img-thumbnail" /></a>
+						<a href="{{ route('doctor.show', $doctor->slug) }}"><img src="{{ asset('storage/doctors/'.$doctor->image) }}" alt="{{ asset('$doctor->name') }} " class="img-responsive img-thumbnail" /></a>
 						<div class="p-mask">
 							<ul class="social-icons">
 								<li><a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a></li>
@@ -256,6 +185,8 @@ h2.accordion-menu {
 							<small class="text-warning">{{ $doctor->years_experience }} Years Of Experience</small>
 						</a>
 					</div>
+					<br>
+					@include('partials.modal.enquiry')
 					<br>
 				</div>
 	        @endforeach

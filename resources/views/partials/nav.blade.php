@@ -35,12 +35,13 @@
 				<li><a class="page-scroll scroll" href="{{ route('doctor.index') }}">Doctors</a></li>
 				<li><a class="page-scroll scroll" href="{{ route('treatment.index') }}">Treatments</a></li>
 				{{-- <li><a class="page-scroll scroll" href="#specialities">Specialities</a></li> --}}
-				<li><a class="" href="{{ route('hospital.index') }}">Hospitals</a></li>
+				<li><a href="{{ route('hospital.index') }}">Hospitals</a></li>
 				{{-- <li><a class="" href="">Blog</a></li> --}}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Specialities <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a class="page-scroll scroll" href="{{ url('/specialities') }}">Specialities</a></li>
+						<li class="divider"></li>
 						<li><a class="page-scroll scroll" href="{{ url('/keyareas') }}">Key Areas</a></li>
 					</ul>
 				</li>
@@ -51,7 +52,9 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a class="page-scroll scroll" href="{{ url('/facilities') }}">Facilities</a></li>
+						<li class="divider"></li>
 						<li><a class="page-scroll scroll" href="{{ url('/testimonies') }}">Testimonials</a></li>
+						<li class="divider"></li>
 						<li><a id="acc" class="page-scroll scroll" href="{{ url('/accommodation') }}">Accommodation</a></li>
 					</ul>
 				</li>
@@ -59,7 +62,25 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get in Touch <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a class="page-scroll scroll" href="{{ url('/appointment') }}">Appointment</a></li>
+						<li class="divider"></li>
 						<li><a class="page-scroll scroll" href="{{ url('/contact') }}">Contact</a></li>
+					@auth
+						<li>
+                            <a href="{{ route('logout') }}" class="btn btn-danger"  style="color: #fff !important;" 
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    @else
+                 		<div><li><a class="btn btn-primary btn-block" href="{{ route('login') }}">Login</a></li></div>
+                 		<li class="divider"></li>
+                        <div><li><a class="btn btn-info btn-block" href="{{ route('register') }}">Register</a></li></div>
+                    @endauth
 					</ul>
 				</li>
 				

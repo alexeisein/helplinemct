@@ -1,14 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\TreatmentRelated;
-use App\Hospital;
+use FreeNation\TreatmentRelated;
+use FreeNation\Hospital;
 
 use Illuminate\Http\Request;
 
 class TreatmentRelatedController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
+
+    
     public function index()
     {
         $treatmentRelateds = TreatmentRelated::orderBy('id')->paginate(20);
@@ -36,7 +42,7 @@ class TreatmentRelatedController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(TreatmentRelated $treatmentrelated)
@@ -65,7 +71,7 @@ class TreatmentRelatedController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Food  $comfort
+     * @param  \FreeNation\Food  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

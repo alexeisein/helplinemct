@@ -1,21 +1,25 @@
 <?php
 
-namespace App;
+namespace FreeNation;
+use FreeNation\Department;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
     protected $fillable = [
+        'hospital_id',
+        'location_id',
+        'department_id',
         'name',
         'years_experience',
         'about',
         'experience',
         'education',
         'awards',
-        'photo',
+        'image',
         'slug',
-        'dicipline',
+        'descipline',
         'gender',
     ];
 
@@ -57,38 +61,28 @@ class Doctor extends Model
     }
 
 // Search for Doctors by name
-    public function scopeDoctorsByName($query, $string)
+    public function scopeDoctorsByName($query, $docName)
     {
-        return $query->where('name', 'like', '%' .$string .'%')
-            ->orWhere('years_experience', $string);
+        return $query->where('name', 'like', '%'.$docName.'%')
+            ->orWhere('years_experience', $docName);
     }
 
-    // public function scopeDoctorsByCity($query, $int, Location $location)
+    // public function scopeDoctorsByDept($query, $dept)
     // {
-    //     return $query->where('location_id', $location->id);
+    //     return $query->where('id', '=', $dept);
     // }
 
-// ASSIGN DR. OR PROF. TO DOCTORS WITHOUT TITLE
-    public function getNameAttribute($value)
+// Function for ucwords for education
+    public function ucwordsField($value)
     {
-        $name = strstr($value, ' ', true); //returns first string of name
-        $titles = ["prof.", "dr."];
-
-        // Get random title between doc and prof
-        $randTitle = rand(0,1);
-        if ($randTitle == 0) {
-            $randTitle = "prof.";
-        }else{
-            $randTitle = "dr.";
-        }
-
-        // Check if first string above is in array
-        if (in_array($name, $titles)) {
-            return $value;
-        }else{
-            return ucfirst($randTitle) .' ' .strstr($value, ' ');
-        }
+        return ucwords($value);
     }
+
+// another method. but at view, FreeNation\Doctor::ucwordsField($edu)
+    // public static function ucwordsField($edu)
+    // {
+    //     return ucwords($edu);
+    // }
 
 // SORT DOCTORS BY YEARS OF EXPERIENCE
     public function scopeFiveYears($query)

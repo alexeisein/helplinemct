@@ -2,6 +2,27 @@
 
 @section('title', $hospital->name)
 
+<style>
+	.hsp-show h3{
+		background-color: #fff !important;
+		padding: 20px; font-weight: bolder;
+	}
+	.facilities{
+		margin-top: 20px;
+	}
+	.facilities ul{
+		font-size: 17px;
+	}
+	.hsp-show p{
+		font-size: 20px !important;
+		text-shadow: 1px 1px #fff;
+		/*background-color: #d9d9d9;*/
+	}
+	.facilities h4{
+		font-size: 17px !important;
+		/*text-transform*/
+	}
+</style>
 
 @section('content')
 
@@ -23,13 +44,18 @@
 			<div><h3 style="text-align: left;">{{ $hospital->name }}</h3></div>
 			<div class=""><p class="text-warning"><small>{{ $hospital->location->city }}, {{ $hospital->location->state }}</small></p>
 			</div>
-			<div class="pull-right" style="margin-top: -30px;">
-				@include('partials.modal.addhospital')
-			</div>
-			<div class="pull-right" style="margin-top: -30px; margin-right:5%;">
-				@include('partials.modal.edithospital')
-			</div>
-			
+
+			@auth
+				@if (Auth::user()->permission == 'admin')
+					<div class="pull-right" style="margin-top: -30px;">
+						@include('partials.modal.addhospital')
+					</div>
+					<div class="pull-right" style="margin-top: -30px; margin-right:5%;">
+						@include('partials.modal.edithospital')
+					</div>
+				@endif
+			@endauth
+
 			<hr>
 		</div>
 		<br>
@@ -64,7 +90,6 @@
 		    <br><hr><br>
 
 		    <div class="">
-		    	{{-- <button class="btn btn-lg btn-danger">Make Enquiry</button> --}}
 		    	@include('partials.modal.enquiry')
 		    </div>
 
@@ -76,42 +101,42 @@
 
 		<hr><br>
 
-		<div class="">
+		<div class="well hsp-show">
 			<h3 class="text-primary">ABOUT HOSPITAL</h3><hr><p>{{ $hospital->about }}</p>
 		</div>
 		<hr><br>
 
-		<div class="">
+		<div class="well hsp-show">
 			<h3 class="text-primary">INFRASTRUCTURES</h3><hr><p>{{ $hospital->infrastructure }}</p>
 		</div>
 
 		<hr><br>
-		<div class="row">
-			<div class="col-lg-12"><h3 class="text-primary">FACILITIES</h3></div><br><br>
+		<div class="row hsp-show">
+			<div class="col-lg-12 well hsp-show"><h3 class="text-primary">FACILITIES</h3></div><br><br>
 
-			<div class="col-lg-2">
-				<h4><i class="text-primary fa fa-bed"></i> COMFORT</h4><br>
-				<ul class="list-unstyled">{!! implode('<li></li>', $comforts) !!}</ul>
+			<div class="col-lg-2 facilities">
+				<h4 class="btn btn-info btn-block"><i class="fa fa-bed"></i> COMFORT</h4><br>
+				<ul class="list-unstyled">{!! implode('<li><hr></li>', $comforts) !!}</ul>
 			</div>
-			<div class="col-lg-2">
-				<h4><i class="text-primary fa fa-money"></i> MONEY MATTERS</h4><br>
-				<ul class="list-unstyled">{!! implode('<li></li>', $money_matters) !!}</ul>
+			<div class="col-lg-2 facilities">
+				<h4 class="btn btn-info btn-block"><i class="fa fa-money"></i> MONEY MATTERS</h4><br>
+				<ul class="list-unstyled">{!! implode('<li><hr></li>', $money_matters) !!}</ul>
 			</div>
-			<div class="col-lg-2">
-				<h4><i class="text-primary fas fa-utensils"></i> FOOD</h4><br>
-				<ul class="list-unstyled">{!! implode('<li></li>', $foods) !!}</ul>
+			<div class="col-lg-2 facilities">
+				<h4 class="btn btn-info btn-block"><i class="fas fa-utensils"></i> FOOD</h4><br>
+				<ul class="list-unstyled">{!! implode('<li><hr></li>', $foods) !!}</ul>
 			</div>
-			<div class="col-lg-2">
-				<h4><i class="text-primary fa fa-stethoscope"></i> TREATMENT RELATED</h4><br>
-				<ul class="list-unstyled">{!! implode('<li></li>', $treatment_relateds) !!}</ul>
+			<div class="col-lg-2 facilities">
+				<h4 class="btn btn-info btn-block"><i class="fa fa-stethoscope"></i> TREATMENT RELATED</h4><br>
+				<ul class="list-unstyled">{!! implode('<li><hr></li>', $treatment_relateds) !!}</ul>
 			</div>
-			<div class="col-lg-2">
-				<h4><i class="text-primary fa fa-language"></i> LANGUAGE</h4><br>
-				<ul class="list-unstyled">{!! implode('<li></li>', $languages) !!}</ul>
+			<div class="col-lg-2 facilities">
+				<h4 class="btn btn-info btn-block"><i class="fa fa-language"></i> LANGUAGE</h4><br>
+				<ul class="list-unstyled">{!! implode('<li><hr></li>', $languages) !!}</ul>
 			</div>
-			<div class="col-lg-2">
-				<h4><i class="text-primary fa fa-car"></i> TRANSPORTATION</h4><br>
-				<ul class="list-unstyled">{!! implode('<li></li>', $transportations) !!}</ul>
+			<div class="col-lg-2 facilities">
+				<h4 class="btn btn-info btn-block"><i class="fa fa-car"></i> TRANSPORTATION</h4><br>
+				<ul class="list-unstyled">{!! implode('<li><hr></li>', $transportations) !!}</ul>
 			</div>
 			
 				<div class="label label-default"></div>
@@ -121,7 +146,7 @@
 
 {{-- Show SIMILAR HOSPITAL --}}
 	<div class="container">
-		<div><h2 class="text-primary text-center">OTHER HOSPITALS</h2></div><hr>
+		<div class="well text-primary text-center"><h2><strong>OTHER HOSPITALS</strong></h2></div><hr>
 		@foreach ($OterHospitals as $OterHospital)
 			<div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-12 filter hdpe">
 				<div class="col-12-lg col-md-12 col-sm-12 col-xs-12">
@@ -139,7 +164,7 @@
 
 	<br><hr><br>
 
-	@include('partials.enquiry_form')
+	@include('partials.modal.enquiry')
 
 
 @include('partials.copyright')

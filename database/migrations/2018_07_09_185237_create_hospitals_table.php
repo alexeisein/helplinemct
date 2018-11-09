@@ -30,7 +30,6 @@ class CreateHospitalsTable extends Migration
             $table->timestamps();
 
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
-            
         });
     }
 

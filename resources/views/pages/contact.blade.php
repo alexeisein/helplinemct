@@ -17,11 +17,31 @@
 
  <div class="contact" id="contact">
 	<div class="container">
-		<div class="w3ls-heading">
-			<h3>Contact Us</h3>
+		<div class="w3ls-heading text-center">
+			<h3><i class="fas fa-envelope text-success"></i> Contact Us</h3>
 		</div>
+		<hr>
+		@include('partials.flash.success_contact')
+		@include('partials.flash.error_contact')
 
-		@include('partials.flash.success')
+		<div class="contact-w3ls">
+			<form action="{{ route('page.contact') }}" method="post" autocomplete="on">
+				<div class="col-md-7 col-sm-7 contact-left agileits-w3layouts">
+					<input type="text" name="fname" placeholder="First Name" value="{{ old('fname') }}">
+					<input type="text" class="email" name="lname" placeholder="Last Name" value="{{ old('lname') }}">
+					<input type="email"  class="email" name="email" placeholder="Email" value="{{ old('email') }}">
+					<input type="text" name="number" placeholder="Mobile Number with Country Code" value="{{ old('number') }}">
+					{{-- CAPTCHA RESPONSE --}}
+					<input type="hidden" name="g-captcha-response" id="g-captcha-response">
+				</div> 
+				<div class="col-md-5 col-sm-5 contact-right agileits-w3layouts">
+					<textarea name="message" placeholder="Message">{{ old('message') }}</textarea>
+					<input type="submit" value="Submit">
+				</div>
+				<div class="clearfix"> </div>
+			{{ csrf_field() }}
+			</form>
+		</div><hr>
 
 		<div class="contact-top-grids">
 			<div class="col-md-6 contact-left-">
@@ -43,7 +63,6 @@
 							{{-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> --}}
 						</ul>
 					</div>
-
 				</div>
 			</div>
 			<div class="col-md-6 contact-right">
@@ -51,28 +70,21 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
-
-	        @include('partials.flash.error')
-
-			<div class="contact-w3ls">
-				<form action="{{ route('page.contact') }}" method="post">
-					<div class="col-md-7 col-sm-7 contact-left agileits-w3layouts">
-						<input type="text" name="fname" placeholder="First Name" value="{{ old('fname') }}">
-						<input type="text" class="email" name="lname" placeholder="Last Name" value="{{ old('lname') }}">
-						<input type="email"  class="email" name="email" placeholder="Email" value="{{ old('email') }}">
-						<input type="text" name="number" placeholder="Mobile Number with Country Code" value="{{ old('number') }}">
-					</div> 
-					<div class="col-md-5 col-sm-5 contact-right agileits-w3layouts">
-						<textarea name="message" placeholder="Message">{{ old('message') }}</textarea>
-						<input type="submit" value="Submit">
-					</div>
-					<div class="clearfix"> </div>
-				{{ csrf_field() }}
-				</form>
-			</div>  
-
 	</div>
 </div>
 
 @include('partials.copyright')
+@endsection
+
+@section('bottomjs')
+	<script>
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6LcI-3gUAAAAAAB-kIg6LSLu9CCdHu4dTYV8jV7l', {action: 'action_name'})
+		.then(function(token) {
+			// console.log(token);
+			document.getElementById('g-captcha-response').value = token;
+		});
+	});
+	</script>
+
 @endsection

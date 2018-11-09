@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -21,8 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashboard()
     {
-        return view('home');
+        return view('auth.dashboard');
     }
 }

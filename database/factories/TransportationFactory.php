@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use App\Hospital;
+use FreeNation\Hospital;
 
-$factory->define(App\Transportation::class, function (Faker $faker) {
+$factory->define(FreeNation\Transportation::class, function (Faker $faker) {
     return [
         'hospital_id' => function(){
     		return Hospital::all()->random();

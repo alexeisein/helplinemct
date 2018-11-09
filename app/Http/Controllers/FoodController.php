@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Food;
-use App\Hospital;
+use FreeNation\Food;
+use FreeNation\Hospital;
 
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
+    
     public function index()
     {
         $foods = Food::orderBy('id')->paginate(20);
@@ -36,7 +41,7 @@ class FoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(Food $food)
@@ -65,7 +70,7 @@ class FoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Food  $comfort
+     * @param  \FreeNation\Food  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

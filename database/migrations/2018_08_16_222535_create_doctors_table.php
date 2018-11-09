@@ -20,7 +20,7 @@ class CreateDoctorsTable extends Migration
             $table->integer('location_id')->unsigned()->nullable()->onDelete('cascade');
             
             $table->string('name')->index();
-            $table->string('dicipline');
+            $table->string('descipline');
             $table->string('gender');
             $table->longText('about');
             $table->text('experience');

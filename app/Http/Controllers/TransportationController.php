@@ -1,14 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Transportation;
-use App\Hospital;
+use FreeNation\Transportation;
+use FreeNation\Hospital;
 
 use Illuminate\Http\Request;
 
 class TransportationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
+
+    
     public function index()
     {
         $transportations = Transportation::orderBy('id')->paginate(20);
@@ -36,7 +43,7 @@ class TransportationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(Transportation $transportation)
@@ -65,7 +72,7 @@ class TransportationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Food  $comfort
+     * @param  \FreeNation\Food  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

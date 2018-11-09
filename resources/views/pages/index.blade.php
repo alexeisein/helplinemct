@@ -26,14 +26,14 @@
 			<div class="header-w3layouts"> 
 				<!-- Navigation -->
 				@include('partials.nav') 
-			</div>	
-			<!-- //header -->
-			<!--banner-->
+			</div>
 			<!--Slider-->
 				@include('partials.slider')
 			<!--//banner-->
 			
-		</div>	
+		</div>
+
+		@include('partials.flash.access_error')
 		<!-- //banner --> 
 		<br><br>
 		<div class="w3ls-heading">

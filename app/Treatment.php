@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace FreeNation;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,6 +32,6 @@ class Treatment extends Model
 
     public function doctors()
     {
-    	return $this->belongsToMany(Doctor::class);
+    	return $this->belongsToMany(Doctor::class)->withPivot('doctor_id', 'treatment_id');
     }
 }

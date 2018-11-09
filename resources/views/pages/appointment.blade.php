@@ -22,7 +22,7 @@
 		</div>
 
 		@include('partials.flash.error')
-		@include('partials.flash.success')
+		@include('partials.flash.success_appointment')
 
 		<div class="appointment-grid">
 			<div class="col-md-4 appointmnet-left">

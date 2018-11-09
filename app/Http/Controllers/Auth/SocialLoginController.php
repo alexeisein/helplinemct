@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace FreeNation\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use FreeNation\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use User;
 

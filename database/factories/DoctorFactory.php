@@ -1,11 +1,11 @@
 <?php
 
-use App\Hospital;
-use App\Department;
-use App\Location;
+use FreeNation\Hospital;
+use FreeNation\Department;
+use FreeNation\Location;
 use Faker\Generator as Faker;
 
-$factory->define(App\Doctor::class, function (Faker $faker) {
+$factory->define(FreeNation\Doctor::class, function (Faker $faker) {
 
     return [
     	'hospital_id' => function(){
@@ -18,7 +18,7 @@ $factory->define(App\Doctor::class, function (Faker $faker) {
     		return Location::all()->random();
     	},
         'name' => $faker->name,
-        'dicipline' => $faker->words(3, true),
+        'descipline' => $faker->words(3, true),
         'years_experience' => $faker->numberBetween(1, 70),
 		'about' => $faker->sentence(100),
         'gender' => function(){

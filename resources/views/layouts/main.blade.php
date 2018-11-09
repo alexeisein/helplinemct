@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="keywords" content="" />
-
 {{-- External Links --}}
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,7 +39,6 @@
  <link href="//fonts.googleapis.com/css?family=Cinzel:400,700,900" rel="stylesheet">
  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
-
 <!-- Default-JavaScript-File -->
 <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
 <!-- //Default-JavaScript-File -->
@@ -57,6 +55,10 @@
 <!-- Scrolling Nav JavaScript --> 
 <script src="{{ asset('js/scrolling-nav.js') }}"></script>
 <script src="{{ asset('js/templatejs.js') }}"></script>
+{{-- Select 2 --}}
+{{-- reCAPTCHA --}}
+<script src='https://www.google.com/recaptcha/api.js?render=6LcI-3gUAAAAAAB-kIg6LSLu9CCdHu4dTYV8jV7l'></script>
+
 @yield('topjs')
 </head>
 <!-- Head -->
@@ -67,11 +69,18 @@
     @yield('content')
 </div>
 
-@yield('buttomjs')
+@yield('bottomjs')
 
 {{-- Mail Chimp --}}
 <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
 <script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"ca52411df38861291bb6b570b","lid":"98e9b708c6"}) })</script>
+
+{{-- To fade away all alerts --}}
+<script>
+	setTimeout(function(){
+		document.getElementById('alert-div').style.display="none";
+	}, 5000);
+</script>
 
 </body>
 </html>

@@ -109,6 +109,23 @@
 		            </div>
 		            <br>
 
+		             {{-- DOCTOR ID --}}
+		            <div class="md-form mb-5{{ $errors->has('doctor_id') ? ' has-error' : '' }}">
+		                <i class="text-primary fas fa-bed prefix grey-text"></i>
+		                <label data-error="wrong" data-success="right" for="doctor_id"><b>Select Doctors Specialized in Treatment</b></label>
+		                <select name="doctor_id[]" id="doctor_id" class="form-control" multiple="multiple">
+		                	@foreach ($doctors as $doctor)
+		                		<option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+		                	@endforeach
+		                </select>
+		                @if ($errors->has('doctor_id'))
+		                	<span class="help-block">
+		                		<strong>{{ $errors->first('doctor_id') }}</strong>
+		                	</span>
+		                @endif
+		            </div>
+		            <br>
+
 		            <div class="md-form mb-5{{ $errors->has('image') ? ' has-error' : '' }}">
 		                <i class="text-primary fas fa-image prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="image">Upload Photo</label>
@@ -140,11 +157,5 @@
 </div>
 
 <script>
-	var in = document.getElementById('in_duration');
-	var out = document.getElementById('out_duration').addEventListener('keyup', add);
-	var total = document.getElementById('total_duration');
-	function add() {
-		total.innerHTML = in.value + out.value;
-	}
 
 </script>

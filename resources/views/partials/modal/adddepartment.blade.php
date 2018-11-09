@@ -59,7 +59,24 @@
 		                		<strong>{{ $errors->first('image') }}</strong>
 		                	</span>
 		                @endif
+		            </div><br>
+
+		            {{-- Hospital ID --}}
+		            <div class="md-form mb-5{{ $errors->has('hospital_id') ? ' has-error' : '' }}">
+		                <i class="text-primary fas fa-bed prefix grey-text"></i>
+		                <label data-error="wrong" data-success="right" for="hospital_id">Hospital Department Created For</label>
+		                <select name="hospital_id" id="hospital_id" class="form-control">
+		                	@foreach ($hospitals as $hospital => $id)
+		                		<option value="{{ $id }}">{{ $hospital }}</option>
+		                	@endforeach
+		                </select>
+		                @if ($errors->has('hospital_id'))
+		                	<span class="help-block">
+		                		<strong>{{ $errors->first('hospital_id') }}</strong>
+		                	</span>
+		                @endif
 		            </div>
+		            
 		        </div>
 
 		        <div class="modal-footer d-flex justify-content-center">

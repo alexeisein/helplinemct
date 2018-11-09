@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Location;
+use FreeNation\Location;
 
 class LocationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *

@@ -1,6 +1,15 @@
 @extends('layouts.main') @section('title', $doctor->name) @section('extracss')
 <link rel="stylesheet" href="{{ asset('css/doctor.css') }}">
 <link rel="stylesheet" href="{{ asset('css/enquiry-form.css') }}"> @endsection @section('content') {{-- Navigation --}}
+
+<style>
+    #edu_li:nth-child(odd){
+        color: #ff6666;
+    }
+    #edu_li:nth-child(even){
+        color: #b30000;
+    }
+</style>
 <div id="home" class="w3ls-banner">
     <!-- header -->
     <div class="header-w3layouts">
@@ -13,7 +22,7 @@
     <hr>
 
     <div class="w3ls-heading title-wrap">
-        <h3><i class="fa fa-user-md fa-heading"></i> Some Notable Doctors In India</h3>
+        <h3><i class="text-primary fa fa-user-md fa-heading"></i> Some Notable Doctors In India</h3>
     </div>
     <hr> {{--
     <div class="row"> --}}
@@ -21,49 +30,58 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a href="" class="btn btn-dangerr btn-block btn-compose-email">Send Enquiry</a>
+                        <span class="btn btn-danger btn-block btn-compose-email"> <h3><i class="fas fa-award" style="color:yellow;"></i> AWARDS <i class="fas fa-award" style="color:yellow;"></i></h3>
+                            <?php $awardArray = explode('.', $doctor->awards);
+                                echo '<h4>' .count($awardArray) .'</h4>';
+                                for ($i=0; $i < count($awardArray); $i++) { 
+                                    echo '<i class="fas fa-star" style="color:yellow;"></i>';
+                                }
+                            ?>
+                        </span>
+
                         <hr>
-                        <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
+                        
+                        {{-- <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
                             <li class="active">
                                 <a href="#mail-inbox.html">
-                                    <i class="fa fa-inbox"></i> Inbox <span class="label pull-right">7</span>
+                                    <i class="text-primary fa fa-inbox"></i> Inbox <span class="label pull-right">7</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#mail-compose.html"><i class="fa fa-envelope-o"></i> Send Mail</a>
+                                <a href="#mail-compose.html"><i class="text-primary fa fa-envelope-o"></i> Send Mail</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-certificate"></i> Important</a>
+                                <a href="#"><i class="text-primary fa fa-certificate"></i> Important</a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-file-text-o"></i> Drafts <span class="label label-info pull-right inbox-notification">35</span>
+                                    <i class="text-primary fa fa-file-text-o"></i> Drafts <span class="label label-info pull-right inbox-notification">35</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#"> <i class="fa fa-trash-o"></i> Trash</a>
+                                <a href="#"> <i class="text-primary fa fa-trash-o"></i> Trash</a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <!-- /.nav -->
 
-                        <h5 class="nav-email-subtitle">More</h5>
-                        <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
+                        {{-- <h5 class="nav-email-subtitle">More</h5> --}}
+                        {{-- <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-folder-open"></i> Promotions <span class="label label-danger pull-right">3</span>
+                                    <i class="text-primary fa fa-folder-open"></i> Promotions <span class="label label-danger pull-right">3</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-folder-open"></i> Job list
+                                    <i class="text-primary fa fa-folder-open"></i> Job list
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-folder-open"></i> Backup
+                                    <i class="text-primary fa fa-folder-open"></i> Backup
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <!-- /.nav -->
                     </div>
 
@@ -75,7 +93,9 @@
                                     <div class="col-lg-12">
                                         <div class="col-xs-12 col-sm-4">
                                             <figure>
-                                                <img class="img-circle img-responsive" alt="" src="{{ asset('storage/doctors/'.$doctor->image) }}" style="width: 300px; height=300px; border:5px solid #d9d9d9; padding: 10px;">
+                                                <div style="width: 270px; height:270px;">
+                                                     <img class="img-circle img-responsive" alt="" src="{{ asset('storage/doctors/'.$doctor->image) }}" style="width:100%; height: 100%; border:5px solid #d9d9d9; padding: 10px;">
+                                                </div>
                                             </figure>
 
                                             <div class="row">
@@ -103,7 +123,7 @@
 
                                                     {{-- Modal Enquiry --}}
                                                     
-                                                    @include('partials.modal_enquiry')
+                                                    @include('partials.modal.enquiry')
 
                                                     {{-- End Modal Enquiry --}}
                                                 </div>
@@ -112,14 +132,21 @@
 
                                         <div class="col-xs-12 col-sm-8">
                                             <ul class="list-group">
-                                                <li class="list-group-item"><i class="fa fa-user-md fa-heading"></i> {{ $doctor->name }}
+                                                <li class="list-group-item"><i class="text-primary fa fa-user-md"></i> {{ $doctor->ucwordsField($doctor->name) }}
                                                     <br>
                                                     <small style="font-style: italic; font-size: small;"><em class="text-warning">({{ $doctor->years_experience }} Years Of Experience)</em></small>
                                                 </li>
-                                                <li class="list-group-item"><i class="fa fa-user-md fa-heading"></i> {{ $doctor->dicipline }}</li>
-                                                <li class="list-group-item"><i class="fas fa-user-graduate fa-heading"></i> {{ $doctor->education }} </li>
-                                                <li class="list-group-item"><i class="fa fa-building fa-heading"></i> {{ $doctor->department->name }} </li>
-                                                <li class="list-group-item"><i class="fas fa-map-marker-alt fa-heading"></i> {{ $doctor->location->city .', ' .$doctor->location->state}}</li>
+                                                <li class="list-group-item"><i class="text-primary fa fa-user-md"></i> {{ $doctor->ucwordsField($doctor->descipline) }}</li>
+                                                
+                                                <li class="list-group-item"><i class="text-primary fas fa-user-graduate"></i>
+                                                    @foreach (explode('.', $doctor->education) as $education)
+                                                        <span id="edu_li">{{ $doctor->ucwordsField($education .', ')}}</span>
+                                                    @endforeach
+
+                                                </li>
+
+                                                <li class="list-group-item"><i class="text-primary far fa-building"></i> {{ $doctor->department->name }} </li>
+                                                <li class="list-group-item"><i class="text-primary fas fa-map-marker-alt"></i> {{ $doctor->location->city .', ' .$doctor->location->state}}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -129,21 +156,21 @@
                             {{--
                             <div> --}}
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="fa fa-user-md"></i> About Doctor</h4>
+                                    <h4><i class="text-primary fa fa-user-md"></i> About Doctor</h4>
                                     <p>
                                         {{ $doctor->about }}
                                     </p>
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="far fa-hospital"></i> Hospital</h4>
+                                    <h4><i class="text-primary far fa-hospital"></i> Hospital</h4>
                                     <p>
                                         {{ $doctor->hospital->name .', ' .$doctor->hospital->location->city .', ' .$doctor->hospital->location->state }}
                                     </p>
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="fas fa-cogs"></i> Specialisation</h4>
+                                    <h4><i class="text-primary fas fa-cogs"></i> Specialisation</h4>
                                     <ul class="list-group">
                                         @foreach ($doctor->specialities as $docSpecialities)
                                         <li class="list-group-item">
@@ -155,19 +182,19 @@
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="far fa-address-card"></i> Work Experience</h4>
+                                    <h4><i class="text-primary far fa-address-card"></i> Work Experience</h4>
                                     <p>
                                         {{ $doctor->experience }}
                                     </p>
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="fas fa-ribbon"></i> Awards</h4>
+                                    <h4><i class="text-primary fas fa-ribbon"></i> Awards</h4>
                                     <p>
                                         <ul class="list-group">
                                             @foreach (explode(".", $doctor->awards) as $award)
                                             <li class="list-group-item awards">
-                                                {{ $award }}
+                                                {{ $doctor->ucwordsField($award) }}
                                                 <span class="badge"><i class="fas fa-check"></i></span>
                                             </li>
                                             @endforeach
@@ -177,11 +204,11 @@
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="fa fa-stethoscope"></i> Treatment List</h4>
+                                    <h4><i class="text-primary fa fa-stethoscope"></i> Treatment List</h4>
                                     <ul class="list-group">
                                         @foreach ($doctor->treatments as $docTreatment)
                                         <li class="list-group-item">
-                                            <a href="">{{ $docTreatment->name }}</a>
+                                            <a href="{{ route('treatment.show', $docTreatment->slug) }}">{{ $docTreatment->name }}</a>
                                             <span class="badge"><i class="fas fa-check"></i></span>
                                         </li>
                                         @endforeach
@@ -189,11 +216,11 @@
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="fa fa-user-graduate"></i> Education</h4>
+                                    <h4><i class="text-primary fa fa-user-graduate"></i> Education</h4>
                                     <ul class="list-group">
                                         @foreach (explode(".", $doctor->education) as $education)
                                         <li class="list-group-item edu">
-                                            {{ $education }}
+                                            {{ $doctor->ucwordsField($education) }}
                                             <span class="badge"><i class="fas fa-check"></i></span>
                                         </li>
                                         @endforeach
@@ -201,7 +228,7 @@
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
-                                    <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+                                    <h4><i class="text-primary fas fa-map-marker-alt"></i> Location</h4>
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             {{ $doctor->location->city }},
@@ -222,20 +249,39 @@
 
         {{-- Show Other Doctors --}}
         <div class="container">
-            <div>
-                <h2 style="text-align: left;">OTHER DOCTORS</h2>
+            <div class="well">
+                <h1 class="text-primary">OTHER DOCTORS</h1>
             </div>
             <hr> @foreach ($otherDoctors as $otherDoctor)
             <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-12 filter hdpe">
-                <div class="col-12-lg col-md-12 col-sm-12 col-xs-12">
-                    <a href="{{ route('doctor.show', $otherDoctor->slug) }}"><h4>{{ $otherDoctor->name }}</h4></a>
-                </div>
+                        <div class="col-12-lg col-md-12 col-sm-12 col-xs-12">
+                            <a href="{{ route('doctor.show', $otherDoctor->slug) }}"><h4 class="text-center">{{ $otherDoctor->name }}</h4></a>
+                        </div>
 
-                <div class="col-xs-12">
-                    <a href="{{ route('doctor.show', $otherDoctor->slug) }}"><img src="{{ asset('storage/doctors/'.$otherDoctor->image) }}" style="" class="img-thumbnail" alt="{{ $otherDoctor->name }}">
-	        	</a>
-                </div>
-            </div>
+                        <div class="col-xs-12">
+                            <div>
+                                <a href="{{ route('doctor.show', $otherDoctor->slug) }}"><img src="{{ asset('storage/doctors/'.$otherDoctor->image) }}" style="" class="img-thumbnail" alt="{{ $otherDoctor->name }}"></a>
+                            </div>
+                            <br>
+
+                            <div class="text-center">
+                                <strong>Years Of Experience: </strong><p class="label label-warning">{{ $otherDoctor->years_experience }}</p>
+                            </div>
+                            <br>
+                            
+                            <div>
+                                <span class="btn btn-danger btn-block btn-compose-email"> <h3><i class="fas fa-award" style="color:yellow;"></i> AWARDS <i class="fas fa-award" style="color:yellow;"></i></h3>
+
+                                    <?php $awardArray = explode('.', $otherDoctor->awards);
+                                    echo '<h4>' .count($awardArray) .'</h4>';
+                                        for ($i=0; $i < count($awardArray); $i++) { 
+                                            echo '<i class="fas fa-star" style="color:yellow;"></i>';
+                                        }
+                                    ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
             @endforeach
         </div>
 

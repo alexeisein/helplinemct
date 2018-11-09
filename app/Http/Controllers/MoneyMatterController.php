@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\MoneyMatter;
-use App\Hospital;
+use FreeNation\MoneyMatter;
+use FreeNation\Hospital;
 
 use Illuminate\Http\Request;
 
 class MoneyMatterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +60,7 @@ class MoneyMatterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\MoneyMatter  $moneyMatter
+     * @param  \FreeNation\MoneyMatter  $moneyMatter
      * @return \Illuminate\Http\Response
      */
     public function show(MoneyMatter $moneyMatter)
@@ -67,7 +71,7 @@ class MoneyMatterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\MoneyMatter  $moneyMatter
+     * @param  \FreeNation\MoneyMatter  $moneyMatter
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,7 +84,7 @@ class MoneyMatterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MoneyMatter  $moneyMatter
+     * @param  \FreeNation\MoneyMatter  $moneyMatter
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -103,7 +107,7 @@ class MoneyMatterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\MoneyMatter  $moneyMatter
+     * @param  \FreeNation\MoneyMatter  $moneyMatter
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

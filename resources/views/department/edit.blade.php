@@ -36,6 +36,7 @@
 						<th scope="col">#No</th>
 						<th scope="col">Name</th>
 						<th scope="col">Description</th>
+						<th scope="col">Department</th>
 						<th scope="col">Photo</th>
 						<th scope="col" class="text-danger text-right">ACTION</th>
 					</tr>
@@ -58,6 +59,32 @@
 								@if ($errors->has('description'))
 									<span class="help-block"><strong>{{ $errors->first('description') }}</strong></span>
 								@endif
+							</td>
+
+							<td>
+								{{-- Hospital ID --}}
+					            <div class="md-form mb-5{{ $errors->has('hospital_id') ? ' has-error' : '' }}">
+					                <i class="text-primary fas fa-bed prefix grey-text"></i>
+					                <label data-error="wrong" data-success="right" for="hospital_id">Hospital Department Created For</label>
+					                <select name="hospital_id" class="form-control">
+					                	@foreach ($hospitals as $hospital => $id)
+					                		<option value="{{ $id }}"
+					                			{{ ($id == $department->hospital_id) ? 'selected' : '' }}
+					                			>{{ $hospital }}</option>
+					                		{{-- @if ($id == $department->hospital_id)
+					                			<option value="{{ $id }}" selected>{{ $hospital }}</option>
+					                		@else
+					                			<option value="{{ $id }}">{{ $hospital }}</option>
+					                		@endif --}}
+					                	@endforeach
+					                </select>
+					                @if ($errors->has('hospital_id'))
+					                	<span class="help-block">
+					                		<strong>{{ $errors->first('hospital_id') }}</strong>
+					                	</span>
+					                @endif
+					            </div>
+
 							</td>
 							<td class="col-lg-2">
 								<input type="file" class="form-control btn btn-info " name="image">
@@ -90,6 +117,41 @@
 				</tbody>
 			</table>
 		</div>
+		
+		@if (Session::has('success_update'))
+			<div class="panel panel-info">
+				<table class="table table-bordered table-striped table-hover table-dark">
+					<thead class="thead-dark">
+						<tr class="text-primary">
+							<th scope="col">#No</th>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+							<th scope="col">Photo</th>
+						</tr>
+					</thead>
+						
+					<tbody>
+						<tr>
+							<td scope="row">{{ $department->id }}</td>
+							<td>
+								<a href="{{ route('department.show', $department->slug) }}" target="_blank">{{ $department->name }}</a>
+							</td>
+
+							<td>
+								<a href="{{ route('department.show', $department->slug) }}" target="_blank" style="font-size: 17px; font-family: 'Raleway'; font-weight: lighter;">{{ str_limit($department->description, 250) }}</a>
+							</td>
+							<td>
+								<div style="width: 160px; height: 110px;">
+									<a href="{{ route('department.show', $department->slug) }}" target="_blank">
+										<img src="{{ asset('storage/departments/'.$department->image) }}" alt="{{ $department->name }}" class="img-responsive" style="width: 100%; height: 100%;">
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		@endif
 		
 	</div>
 

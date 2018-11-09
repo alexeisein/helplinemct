@@ -26,8 +26,13 @@
 		<div class="w3ls-heading title-wrap">
 			<h3><i class="far fa-hospital fa-heading"></i> Hospitals In India</h3>
 		</div>
-
-		@include('partials.modal.addhospital')</div>
+		
+		@auth
+			@if (Auth::user()->permission == 'admin')
+				@include('partials.modal.addhospital')</div>
+			@endif
+		@endauth
+		
 		<br>
 		@include('partials.flash.success_create')
 		<hr>
@@ -81,14 +86,14 @@
 								</p>
 							</div><hr>
 
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:1px solid #d9d9d9;"><h4 class="text-primary"><b>LOCATION:</b></h4>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom:1px solid #d9d9d9; padding-bottom: 10px; margin-bottom: 10px;"><h4 class="text-primary"><b>LOCATION:</b></h4>
 								<p><b>City:</b> {{ str_limit($hospital->location->city) }}</p>
 							 	<p><b>State:</b> {{ str_limit($hospital->location->state) }}</p>
 								<p><b>Country:</b> {{ str_limit($hospital->location->country) }}</p>
 							</div>
-							<div>
-								@include('partials.modal.enquiry')
-							</div>
+
+							@include('partials.modal.enquiry')
+
 						</div>
 					</div>
 					<div class="col-lg-12" style="border-bottom:2px solid #d9d9d9; margin-bottom: 40px;"></div>

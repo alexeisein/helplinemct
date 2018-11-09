@@ -1,14 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Language;
-use App\Hospital;
+use FreeNation\Language;
+use FreeNation\Hospital;
 
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
+
+
     public function index()
     {
         $languages = Language::orderBy('id')->paginate(20);
@@ -36,7 +43,7 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(Language $language)
@@ -65,7 +72,7 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Food  $comfort
+     * @param  \FreeNation\Food  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

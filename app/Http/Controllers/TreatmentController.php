@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Treatment;
+use FreeNation\Treatment;
+use FreeNation\Doctor;
 use Storage;
 use Illuminate\Http\Request;
 
@@ -13,10 +14,11 @@ class TreatmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Doctor $doctor)
     {
-        $treatments = Treatment::orderBy('id')->paginate(16);
-        return view('treatments.index', compact('treatments'));
+        $treatments = Treatment::orderBy('id')->paginate(20);
+        $doctors = $doctor->all();
+        return view('treatments.index', compact('treatments', 'doctors'));
     }
 
     /**
@@ -46,7 +48,7 @@ class TreatmentController extends Controller
             'out_duration' => 'required|integer',
             'total_duration' => 'required|integer',
             'description' => 'required|max:4000',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
@@ -64,18 +66,20 @@ class TreatmentController extends Controller
                 'description' => $request->description,
                 'slug' => str_slug($request->name),
                 'image' => $imageName
-                ]
-            );
+            ]);
 
-            session()->flash('success_create', $treatment->name ." Treatment Created Successfully!");
+            $treatment->doctors()->sync($request->doctor_id, false);
+
+            session()->flash('success_create', ucwords($treatment->name) ." Treatment Created Successfully!");
              return redirect()->back();
+             // return redirect()->route('treatment.show', $treatment->slug);
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Treatment  $treatment
+     * @param  \FreeNation\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -87,19 +91,24 @@ class TreatmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Treatment  $treatment
+     * @param  \FreeNation\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Treatment $treatment)
+    public function edit(Treatment $treatment, Doctor $doctor)
     {
-        return view('treatments.edit', compact('treatment'));
+        // $relIds = $treatment->doctors()->allRelatedIds();
+        //$treatments = $treatment->where('slug', '=', $treatment->slug)->first();
+        $doctors = $doctor->all();
+        $doctorsIds = $treatment->doctors->pluck('id', 'name');//just for the "add button in edit page" to access doctors  k
+
+        return view('treatments.edit', compact('treatment','doctorsIds', 'doctors'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Treatment  $treatment
+     * @param  \FreeNation\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Treatment $treatment)
@@ -156,7 +165,7 @@ class TreatmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Treatment  $treatment
+     * @param  \FreeNation\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
     public function destroy(Treatment $treatment)

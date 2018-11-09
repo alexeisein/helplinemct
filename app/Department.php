@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace FreeNation;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,7 @@ class Department extends Model
 {
     protected $fillable = [
         'name',
+        'hospital_id',
         'description',
         'image',
         'slug',

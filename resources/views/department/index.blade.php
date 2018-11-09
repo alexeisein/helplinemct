@@ -22,6 +22,7 @@
 	<br>
 
 	@include('partials.flash.success_create')
+	@include('partials.flash.error')
 
 	<div class="col-lg-11">
 
@@ -36,7 +37,11 @@
 						<th scope="col">Name</th>
 						<th scope="col">Description</th>
 						<th scope="col">Photo</th>
-						<th scope="col" class="text-danger text-right">ACTION</th>
+						@auth
+							@if(Auth::user()->permission == 'admin')
+								<th scope="col" class="text-danger text-right">ACTION</th>
+							@endif
+						@endauth
 					</tr>
 				</thead>
 				<tbody>
@@ -57,18 +62,23 @@
 									</a>
 								</div>
 							</td>
-							<td><a class="btn btn-warning btn-sm btn-block" href="{{ route('department.edit', $department->id) }}">Edit</a>
-							</td>
-							<td>
-								<form action="{{ route('department.destroy', $department->slug) }}" method="post" class="form-vertical">
-									@csrf
-									@method('delete')
-									{{-- {{ method_field('delete') }} --}}
-									<div class="form-group">
-										<input type="submit" value="Delete" class="btn btn-danger btn-sm btn-block">
-									</div>
-								</form>
-							</td>
+							@auth
+								@if (Auth::user()->permission == 'admin')
+									<td><a class="btn btn-warning btn-sm btn-block" href="{{ route('department.edit', $department->id) }}">Edit</a>
+									</td>
+								
+								<td>
+									<form action="{{ route('department.destroy', $department->slug) }}" method="post" class="form-vertical">
+										@csrf
+										@method('delete')
+										{{-- {{ method_field('delete') }} --}}
+										<div class="form-group">
+											<input type="submit" value="Delete" class="btn btn-danger btn-sm btn-block">
+										</div>
+									</form>
+								</td>
+								@endif
+							@endauth
 						</tr>
 					@endforeach
 				</tbody>
@@ -77,7 +87,12 @@
 		<div class="text-center">{{ $departments->links() }}</div>
 	</div>
 
-	<div class="col-lg-1">@include('partials.modal.adddepartment')</div>
+	@auth
+		@if(Auth::user()->permission == 'admin')
+			<div class="col-lg-1">@include('partials.modal.adddepartment')</div>
+		@endif
+	@endauth
+	
 
 	<br><hr><br>
 

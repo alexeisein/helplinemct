@@ -18,11 +18,6 @@ class DatabaseSeeder extends Seeder
         
         factory(App\Location::class, 5)->create();
 
-        // factory(App\Speciality::class, 1)->create();
-
-        factory(App\Treatment::class, 3)->create();
-        
-
         factory(App\Hospital::class, 10)->create()->each(function($hospital) {
 
                 $hospital->departments()->saveMany(
@@ -55,18 +50,27 @@ class DatabaseSeeder extends Seeder
             
         });
 
-        // factory(App\Comfort::class, 15)->create();
+// Populate the tables
+        factory(App\Treatment::class, 100)->create();
 
-        factory(App\Doctor::class, 50)->create()->each(function($doctor) {
-          factory(App\Treatment::class, 5)->make()->each(function($treatment) use ($doctor) {
-                  $doctor->treatments()->save($treatment);
-          });
-          factory(App\Speciality::class, 6)->make()->each(function($speciality) use ($doctor) {
-                  $doctor->specialities()->save($speciality);
-          });
-             
+        factory(App\Speciality::class, 40)->create();
+
+        factory(App\Doctor::class, 50)->create();
+// Get all the collection
+        $treatments = (App\Treatment::all());
+        $specialities = (App\Speciality::all());
+        $doctors = (App\Doctor::all());
+// Populate the pivot Tables for doctor and treatment
+        $doctors->each(function ($doctor) use ($treatments) { 
+            $doctor->treatments()->attach(
+                $treatments->random(rand(1, 10))->pluck('id')->toArray()
+            );
         });
-
-
+// Populate the pivot Tables for doctor and specialities
+        $doctors->each(function ($doctor) use ($specialities) { 
+            $doctor->specialities()->attach(
+                $specialities->random(rand(1, 15))->pluck('id')->toArray()
+            ); 
+        });
     }
 }

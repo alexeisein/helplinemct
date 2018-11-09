@@ -11,10 +11,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/welcome', function () {
-	// return view('welcome');
-	return redirect()->route('homepage');
-});
 
 Route::group(['prefix' => 'keyareas'], function(){
 
@@ -33,11 +29,14 @@ Route::group(['prefix' => 'keyareas'], function(){
 
 
 Auth::routes();
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard')->middleware('isAdmin:admin');
 
+// Route::view('/welcome', 'welcome')->name('welcome');
+Route::view('/welcome', 'pages.index')->name('homepage');
 Route::view('/home', 'pages.index')->name('homepage');
+Route::view('/', 'pages.index')->name('homepage');
 Route::view('/main', 'pages.main');
-Route::view('/', 'pages.index');
-Route::view('/about', "PageController@about");
+Route::view('/about', "pages.about");
 Route::view('/testimonies', 'pages.testimonies');
 Route::view('/accommodation', 'pages.accommodation');
 Route::view('/contact', 'pages.contact');
@@ -54,34 +53,42 @@ Route::view('/maintenance', 'pages.maintenance');
 
 //TREATMENT
 Route::get('/treatment', "TreatmentController@index")->name('treatment.index');
-Route::post('/treatment', "TreatmentController@store")->name('treatment.store');
+Route::post('/treatment', "TreatmentController@store")->name('treatment.store')->middleware('isAdmin:admin');
 Route::get('/treatment/{treatmentSlug}', "TreatmentController@show")->name('treatment.show');
-Route::patch('/treatment/{treatment}', "TreatmentController@update")->name('treatment.update');
-Route::delete('/treatment/{treatment}', "TreatmentController@destroy")->name('treatment.destroy');
-Route::get('/treatment/{treatment}/edit', "TreatmentController@edit")->name('treatment.edit');
+Route::patch('/treatment/{treatment}', "TreatmentController@update")->name('treatment.update')->middleware('isAdmin:admin');
+Route::delete('/treatment/{treatment}', "TreatmentController@destroy")->name('treatment.destroy')->middleware('isAdmin:admin');
+Route::get('/treatment/{treatment}/edit', "TreatmentController@edit")->name('treatment.edit')->middleware('isAdmin:admin');
+
+//SPECIALITIES
+Route::get('/speciality', "SpecialityController@index")->name('speciality.index');
+Route::post('/speciality', "SpecialityController@store")->name('speciality.store')->middleware('isAdmin:admin');
+Route::get('/speciality/{specialitySlug}', "SpecialityController@show")->name('speciality.show');
+Route::patch('/speciality/{speciality}', "SpecialityController@update")->name('speciality.update')->middleware('isAdmin:admin');
+Route::delete('/speciality/{speciality}', "SpecialityController@destroy")->name('speciality.destroy')->middleware('isAdmin:admin');
+Route::get('/speciality/{speciality}/edit', "SpecialityController@edit")->name('speciality.edit')->middleware('isAdmin:admin');
 
 // HOSPITALS
 Route::get('/hospital', "HospitalController@index")->name('hospital.index');
 Route::get('/hospital/{hospital}', "HospitalController@show")->name('hospital.show');
-Route::post('/hospital/', "HospitalController@store")->name('hospital.store');
-Route::patch('/hospital/{hospital}', "HospitalController@update")->name('hospital.update');
-Route::get('/hospital/{hospital}/edit', "HospitalController@edit")->name('hospital.edit');
-Route::delete('/hospital/{hospital}', "HospitalController@destroy")->name('hospital.destroy');
+Route::post('/hospital/', "HospitalController@store")->name('hospital.store')->middleware('isAdmin:admin');
+Route::patch('/hospital/{hospital}', "HospitalController@update")->name('hospital.update')->middleware('isAdmin:admin');
+Route::get('/hospital/{hospital}/edit', "HospitalController@edit")->name('hospital.edit')->middleware('isAdmin:admin');
+Route::delete('/hospital/{hospital}', "HospitalController@destroy")->name('hospital.destroy')->middleware('isAdmin:admin');
 
 // LOCATION
 Route::get('/location', "LocationController@index")->name('location.index');
 Route::post('/location/', "LocationController@store")->name('location.store');
 Route::patch('/location/{location}', "LocationController@update")->name('location.update');
-Route::get('/location/{location}/edit', "LocationController@edit")->name('location.edit');
 Route::delete('/location/{location}', "LocationController@destroy")->name('location.destroy');
+Route::get('/location/{location}/edit', "LocationController@edit")->name('location.edit');
 
 // DEPARTMENT
 Route::get('/department', "DepartmentController@index")->name('department.index');
 Route::post('/department/', "DepartmentController@store")->name('department.store');
 Route::get('/department/{department}', "DepartmentController@show")->name('department.show');
 Route::patch('/department/{department}', "DepartmentController@update")->name('department.update');
-Route::get('/department/{department}/edit', "DepartmentController@edit")->name('department.edit');
 Route::delete('/department/{department}', "DepartmentController@destroy")->name('department.destroy');
+Route::get('/department/{department}/edit', "DepartmentController@edit")->name('department.edit');
 
 // FACILITY-COMFORT
 Route::get('/comfort', "ComfortController@index")->name('comfort.index');
@@ -126,12 +133,14 @@ Route::get('/transportation/{transportation}/edit', "TransportationController@ed
 Route::delete('/transportation/{transportation}', "TransportationController@destroy")->name('transportation.destroy');
 
 //DOCTORS
-Route::get('/doctor', "DoctorController@index")->name('doctor.index');
+Route::get('/doctor', "DoctorController@index")->name('doctor.index');//
+Route::post('/doctor', "DoctorController@store")->name('doctor.store')->middleware('isAdmin:admin');
 Route::get('/doctor/{doctor}', "DoctorController@show")->name('doctor.show');
-Route::get('/doctor/department/{deptname}', "DoctorController@docDept")->name('doc_dept.index');
+Route::get('/doctor/{doctor}/edit', "DoctorController@edit")->name('doctor.edit')->middleware('isAdmin:admin');
 
 // QUERRIES
 Route::get('/search/doctor', "DoctorController@index")->name('doctor.search');
-Route::get('/search/doctor/city', "DoctorController@city")->name('doctor.city');
+Route::get('/doctor/department/{department}', "DoctorController@docDept")->name('doctor.docDept');
+Route::get('/search/doctor/city/{city}', "DoctorController@city")->name('doctor.city');
 Route::get('/search/hospital', "HospitalController@index")->name('hospital.search');
 Route::get('/search/treatment', "TreatmentController@index")->name('treatment.search');

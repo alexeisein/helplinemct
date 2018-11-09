@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Hospital;
-use App\Location;
-use App\Comfort;
+use FreeNation\Hospital;
+use FreeNation\Location;
+use FreeNation\Comfort;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -18,6 +18,7 @@ class HospitalController extends Controller
     public function index(Request $request)
     {
         // }
+        // dd($request);
         $search = $request->input('search');
         $location = Location::pluck('id', 'city');
         $hospitals = Hospital::inRandomOrder()->SearchHospital($search)->paginate(20);
@@ -84,7 +85,7 @@ class HospitalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Hospital  $hospital
+     * @param  \FreeNation\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -130,7 +131,7 @@ class HospitalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Hospital  $hospital
+     * @param  \FreeNation\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function edit(Hospital $hospital)
@@ -142,7 +143,7 @@ class HospitalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Hospital  $hospital
+     * @param  \FreeNation\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Hospital $hospital)
@@ -153,7 +154,7 @@ class HospitalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Hospital  $hospital
+     * @param  \FreeNation\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
     public function destroy(Hospital $hospital)

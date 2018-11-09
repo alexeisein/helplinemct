@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace FreeNation;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class Picture extends Model
 
     public function album()
     {
-    	return $this->belongsTo('App\Album');
+    	return $this->belongsTo('FreeNation\Album');
     }
 }

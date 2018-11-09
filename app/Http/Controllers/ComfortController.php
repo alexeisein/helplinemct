@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace FreeNation\Http\Controllers;
 
-use App\Comfort;
-use App\Hospital;
+use FreeNation\Comfort;
+use FreeNation\Hospital;
 
 use Illuminate\Http\Request;
 
 class ComfortController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +60,7 @@ class ComfortController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function show(Comfort $comfort)
@@ -67,7 +71,7 @@ class ComfortController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function edit(Comfort $comfort)
@@ -79,7 +83,7 @@ class ComfortController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -102,7 +106,7 @@ class ComfortController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comfort  $comfort
+     * @param  \FreeNation\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
