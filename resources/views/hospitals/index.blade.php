@@ -37,7 +37,7 @@
 		@include('partials.flash.success_create')
 		<hr>
 
-		@include('partials.hsp_search')
+		{{-- @include('partials.hsp_search') --}}
 
 		{{-- BREAD CRUMBS --}}
 		<div style="border:1px dotted #3e3e3e; padding: 5px; border-radius: 10px; margin-top: 60px;" class="col-lg-12">
@@ -67,7 +67,7 @@
 							</div>
 
 							<div class="col-12-lg col-md-12 col-sm-12 col-xs-12">
-								<p><strong class="text-warning"><small>Established in: {{ $hospital->established }} | Number of Beds : {{ $hospital->beds }}</small></strong> </p>
+								<p><strong class="text-warning"><small>Established in: {{ $hospital->established }} | Number of Beds : {{ $hospital->bed }}</small></strong> </p>
 							</div>
 
 							<div id="img-wrap" class="col-xs-12">

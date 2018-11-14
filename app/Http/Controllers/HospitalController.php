@@ -21,7 +21,7 @@ class HospitalController extends Controller
         // dd($request);
         $search = $request->input('search');
         $location = Location::pluck('id', 'city');
-        $hospitals = Hospital::inRandomOrder()->SearchHospital($search)->paginate(20);
+        $hospitals = Hospital::inRandomOrder()->SearchHospital($search)->paginate(16);
         return view('hospitals.index', compact('hospitals', 'search', 'location'));
         //the returned search is for pagination appendition in view, else, search works.
     }
@@ -47,12 +47,12 @@ class HospitalController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'name' => 'required|max:190',
-            'about' => 'required|max:2000',
-            'bed' => 'required|integer',
-            'icu_bed' => 'required|integer',
-            'established' => 'required|integer',
-            'achievment' => 'required|max:2000',
-            'infrastructure' => 'required|max:2000',
+            'about' => 'required|max:5000',
+            'bed' => 'nullable|integer',
+            'icu_bed' => 'nullable|integer',
+            'established' => 'nullable|integer',
+            'achievment' => 'nullable|max:2000',
+            'infrastructure' => 'nullable|max:2000',
             'address' => 'required|max:2000',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -77,7 +77,7 @@ class HospitalController extends Controller
                 ]
             );
 
-            session()->flash('success_create', $hospital ." Hospital Created Successfully!");
+            session()->flash('success_create', $hospital->name ." Hospital Created Successfully!");
              return redirect()->back();
         }
     }

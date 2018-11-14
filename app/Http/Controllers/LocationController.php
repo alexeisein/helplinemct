@@ -119,7 +119,7 @@ class LocationController extends Controller
         try{
             $location = Location::where('slug', $slug)->delete();
             session()->flash('success_delete', ' Deleted Successfully');
-            return redirect()->route('location.index');
+            return redirect()->back();
 
         }catch(Exception $e){
             return $e->getMessage();

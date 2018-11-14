@@ -31,7 +31,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
 @yield('extracss')
 
-
 <!-- fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,300">
 
@@ -58,6 +57,7 @@
 {{-- Select 2 --}}
 {{-- reCAPTCHA --}}
 <script src='https://www.google.com/recaptcha/api.js?render=6LcI-3gUAAAAAAB-kIg6LSLu9CCdHu4dTYV8jV7l'></script>
+<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
 @yield('topjs')
 </head>

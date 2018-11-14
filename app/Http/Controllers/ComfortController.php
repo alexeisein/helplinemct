@@ -115,6 +115,6 @@ class ComfortController extends Controller
         $comfort->delete();
 
         session()->flash('success_delete', ' Deleted Successfully');
-        return redirect()->route('comfort.index');
+        return redirect()->back();
     }
 }

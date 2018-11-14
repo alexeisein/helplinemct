@@ -8,7 +8,6 @@ class Department extends Model
 {
     protected $fillable = [
         'name',
-        'hospital_id',
         'description',
         'image',
         'slug',
@@ -19,9 +18,9 @@ class Department extends Model
     	return $this->hasMany(Doctor::class);
     }
 
-    public function hospital()
+    public function hospitals()
     {
-    	return $this->belongsTo(Hospital::class);
+    	return $this->belongsToMany(Hospital::class);
     }
 
     public function getNameAttribute($value)

@@ -79,6 +79,6 @@ class FoodController extends Controller
         $food->delete();
 
         session()->flash('success_delete', ' Deleted Successfully');
-        return redirect()->route('food.index');
+        return redirect()->back();
     }
 }

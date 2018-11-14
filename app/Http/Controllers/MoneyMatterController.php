@@ -116,6 +116,6 @@ class MoneyMatterController extends Controller
         $moneyMatter->delete();
 
         session()->flash('success_delete', ' Deleted Successfully');
-        return redirect()->route('moneymatter.index');
+        return redirect()->back();
     }
 }

@@ -157,5 +157,7 @@
 </div>
 
 <script>
-
-</script>
+  tinymce.init({
+    selector: '#description'
+  });
+  </script>

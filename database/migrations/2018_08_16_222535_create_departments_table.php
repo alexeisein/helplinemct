@@ -15,14 +15,12 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('hospital_id')->unsigned();
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('image')->nullable()->default('department.jpg');
             $table->string('slug')->unique()->nullable();
             $table->timestamps();
 
-            $table->foreign('hospital_id')->references('id')->on('hospitals');
         });
     }
 

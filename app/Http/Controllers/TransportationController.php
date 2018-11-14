@@ -81,6 +81,6 @@ class TransportationController extends Controller
         $transportation->delete();
 
         session()->flash('success_delete', ' Deleted Successfully');
-        return redirect()->route('transportation.index');
+        return redirect()->back();
     }
 }

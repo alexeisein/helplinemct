@@ -42,7 +42,7 @@ class Hospital extends Model
 
     public function departments()
     {
-        return $this->hasMany(Department::class);
+        return $this->belongsToMany(Department::class);
     }
 
     public function comforts()

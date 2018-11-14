@@ -32,8 +32,11 @@
                     <div class="col-sm-3">
                         <span class="btn btn-danger btn-block btn-compose-email"> <h3><i class="fas fa-award" style="color:yellow;"></i> AWARDS <i class="fas fa-award" style="color:yellow;"></i></h3>
                             <?php $awardArray = explode('.', $doctor->awards);
-                                echo '<h4>' .count($awardArray) .'</h4>';
-                                for ($i=0; $i < count($awardArray); $i++) { 
+                                $awardsTotal = sizeOf($awardArray);
+                                $awardsTotalInt = (int)$awardsTotal - 1;
+                                
+                                echo '<h4>' .$awardsTotalInt .'</h4>';
+                                for ($i=0; $i < $awardsTotalInt; $i++) { 
                                     echo '<i class="fas fa-star" style="color:yellow;"></i>';
                                 }
                             ?>
@@ -138,11 +141,9 @@
                                                 </li>
                                                 <li class="list-group-item"><i class="text-primary fa fa-user-md"></i> {{ $doctor->ucwordsField($doctor->descipline) }}</li>
                                                 
-                                                <li class="list-group-item"><i class="text-primary fas fa-user-graduate"></i>
-                                                    @foreach (explode('.', $doctor->education) as $education)
-                                                        <span id="edu_li">{{ $doctor->ucwordsField($education .', ')}}</span>
-                                                    @endforeach
-
+                                                <li class="list-group-item">
+                                                    <i class="text-primary fas fa-user-graduate"> {!! $doctor->education !!}</i>
+                                                        
                                                 </li>
 
                                                 <li class="list-group-item"><i class="text-primary far fa-building"></i> {{ $doctor->department->name }} </li>
@@ -158,7 +159,7 @@
                                 <div class="bs-callout bs-callout-danger">
                                     <h4><i class="text-primary fa fa-user-md"></i> About Doctor</h4>
                                     <p>
-                                        {{ $doctor->about }}
+                                        {!! $doctor->about !!}
                                     </p>
                                 </div>
 
@@ -184,23 +185,15 @@
                                 <div class="bs-callout bs-callout-danger">
                                     <h4><i class="text-primary far fa-address-card"></i> Work Experience</h4>
                                     <p>
-                                        {{ $doctor->experience }}
+                                        {!! $doctor->experience !!}
                                     </p>
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
                                     <h4><i class="text-primary fas fa-ribbon"></i> Awards</h4>
-                                    <p>
-                                        <ul class="list-group">
-                                            @foreach (explode(".", $doctor->awards) as $award)
-                                            <li class="list-group-item awards">
-                                                {{ $doctor->ucwordsField($award) }}
-                                                <span class="badge"><i class="fas fa-check"></i></span>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-
-                                    </p>
+                                    <div style="max-width: 800px;">
+                                            {!! $doctor->awards !!}
+                                    </div>
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
@@ -217,14 +210,7 @@
 
                                 <div class="bs-callout bs-callout-danger">
                                     <h4><i class="text-primary fa fa-user-graduate"></i> Education</h4>
-                                    <ul class="list-group">
-                                        @foreach (explode(".", $doctor->education) as $education)
-                                        <li class="list-group-item edu">
-                                            {{ $doctor->ucwordsField($education) }}
-                                            <span class="badge"><i class="fas fa-check"></i></span>
-                                        </li>
-                                        @endforeach
-                                    </ul>
+                                        {!! $doctor->education !!}
                                 </div>
 
                                 <div class="bs-callout bs-callout-danger">
@@ -272,9 +258,13 @@
                             <div>
                                 <span class="btn btn-danger btn-block btn-compose-email"> <h3><i class="fas fa-award" style="color:yellow;"></i> AWARDS <i class="fas fa-award" style="color:yellow;"></i></h3>
 
-                                    <?php $awardArray = explode('.', $otherDoctor->awards);
-                                    echo '<h4>' .count($awardArray) .'</h4>';
-                                        for ($i=0; $i < count($awardArray); $i++) { 
+                                    <?php 
+                                        $awardArray = explode('.', $otherDoctor->awards);
+                                        $awardsTotal = sizeOf($awardArray);
+                                        $awardsTotalInt = (int)$awardsTotal - 1;
+                                
+                                        echo '<h4>' .$awardsTotalInt .'</h4>';
+                                        for ($i=0; $i < $awardsTotalInt; $i++) { 
                                             echo '<i class="fas fa-star" style="color:yellow;"></i>';
                                         }
                                     ?>

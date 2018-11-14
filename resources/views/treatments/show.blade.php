@@ -34,8 +34,8 @@
 				</div>
 			</div>
 
-			<div class="col-lg-6">
-				<p>{{ $treatment->description }}</p>
+			<div class="">
+				<p>{!! $treatment->description !!}</p>
 				<br><hr><br>
 				@include('partials.modal.enquiry')
 			</div>

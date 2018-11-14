@@ -71,8 +71,17 @@
 								@endif
 							@endauth
 							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->name }}</a></td>
-							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ number_format($treatment->cost) }}</td></a>
-							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ str_limit($treatment->description),250 }}</td></a>
+
+							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ number_format($treatment->cost) }}</a>
+							</td>
+
+							<td><a href="{{ route('treatment.show', $treatment->slug) }}">
+								{{-- {{ substr(strip_tags($treatment->description), 0,200) }}
+								{{ strlen(strip_tags($treatment->description)) > 200 ? '[ ... ]' : '' }} --}}
+								{{ str_limit(strip_tags($treatment->description), 200) }}
+							</a>
+							</td>
+
 							<td>
 								<div style="width: 160px; height: 110px;">
 									<a href="{{ route('treatment.show', $treatment->slug) }}">
@@ -80,10 +89,19 @@
 									</a>
 								</div>
 							</td>
-							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->travellers }}</td></a>
-							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->inpatient_duration }}</td></a>
-							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->outpatient_duration }}</td></a>
-							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->total_duration }}</td></a>
+
+							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->travellers }}</a>
+							</td>
+
+							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->inpatient_duration }}</a>
+							</td>
+
+							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->outpatient_duration }}</a>
+							</td>
+
+							<td><a href="{{ route('treatment.show', $treatment->slug) }}">{{ $treatment->total_duration }}</a>
+							</td>
+
 							@auth
 								@if (Auth::user()->permission == 'admin')
 									<td>

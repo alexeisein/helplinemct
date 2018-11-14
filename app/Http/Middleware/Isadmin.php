@@ -26,7 +26,7 @@ class Isadmin
                 return $next($request);
             }
             session()->flash('access_error', 'Permission Denied !');
-            return redirect()->route('homepage');
+            return redirect()->back();
         }
         session()->flash('access_error', 'Please, login in to proceed !');
         return redirect()->route('login');

@@ -106,11 +106,11 @@ class DoctorController extends Controller
             'name' => 'required|max:191|unique:doctors',
             'descipline' => 'required|max:1000',
             'gender' => 'required',
-            'about' => 'required|max:3000',
-            'experience' => 'required|max:1000',
+            'about' => 'required|max:65500',
+            'experience' => 'required|max:65500',
             'years_experience' => 'required|integer',
-            'education' => 'required|max:1000',
-            'awards' => 'required|max:1000',
+            'education' => 'required|max:65500',
+            'awards' => 'required|max:65500',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);
 

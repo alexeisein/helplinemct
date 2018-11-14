@@ -80,7 +80,7 @@ class TreatmentRelatedController extends Controller
         $treatmentRelated->delete();
 
         session()->flash('success_delete', ' Deleted Successfully');
-        return redirect()->route('treatmentrelated.index');
+        return redirect()->back();
     }
 
 

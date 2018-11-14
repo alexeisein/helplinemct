@@ -81,7 +81,7 @@ class LanguageController extends Controller
         $language->delete();
 
         session()->flash('success_delete', ' Deleted Successfully');
-        return redirect()->route('language.index');
+        return redirect()->back();
     }
 
 }

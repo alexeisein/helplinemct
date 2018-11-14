@@ -19,8 +19,8 @@ class CreateDoctorSpecialityTable extends Migration
             $table->integer('speciality_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('doctor_id')->references('id')->on('doctors');
-            $table->foreign('speciality_id')->references('id')->on('specialities');
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
+            $table->foreign('speciality_id')->references('id')->on('specialities')->onDelete('cascade');
         });
     }
 

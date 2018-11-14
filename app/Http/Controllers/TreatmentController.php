@@ -47,7 +47,7 @@ class TreatmentController extends Controller
             'in_duration' => 'required|integer',
             'out_duration' => 'required|integer',
             'total_duration' => 'required|integer',
-            'description' => 'required|max:4000',
+            'description' => 'required|max:65500',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -121,7 +121,7 @@ class TreatmentController extends Controller
                 'in_duration' => 'required|integer',
                 'out_duration' => 'required|integer',
                 'total_duration' => 'required|integer',
-                'description' => 'required|max:4000',
+                'description' => 'required|max:65500',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
         }else{

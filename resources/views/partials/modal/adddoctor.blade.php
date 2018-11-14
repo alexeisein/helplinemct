@@ -115,7 +115,7 @@
 		            <div class="md-form{{ $errors->has('about') ? ' has-error' : '' }}">
 		                <i class="fas fa-pencil-alt prefix grey-text"></i>
 		                <label data-error="wrong" data-success="right" for="form8">About</label>
-		                <textarea type="text" id="form8" name="about" class="md-textarea form-control" rows="4">{{ old('about') }}</textarea>
+		                <textarea type="text" id="about" name="about" class="md-textarea form-control" rows="4">{{ old('about') }}</textarea>
 		                @if ($errors->has('about'))
 		                	<span class="help-block">
 		                		<strong>{{ $errors->first('about') }}</strong>
@@ -201,3 +201,9 @@
     	<a href="" class="btn btn-primary btn-rounded mb-4 btn-lg" data-toggle="modal" data-target="#modalContactForm">Add Doctor</a>
     	@endif 
 </div>
+
+<script>
+	tinymce.init({
+	    mode: 'textareas',
+	  });
+</script>

@@ -19,8 +19,8 @@ class CreateDoctorTreatmentTable extends Migration
             $table->integer('treatment_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('doctor_id')->references('id')->on('doctors');
-            $table->foreign('treatment_id')->references('id')->on('treatments');
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
+            $table->foreign('treatment_id')->references('id')->on('treatments')->onDelete('cascade');
         });
     }
 
